@@ -1,0 +1,2 @@
+# Elysiaos
+my hyprland dotfiles
