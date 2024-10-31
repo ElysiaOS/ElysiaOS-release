@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#!/bin/bash
+python -m venv ~/myenv
+source ~/myenv/bin/activate
+
+python3 ~/Scripts/kew-rpc.py
