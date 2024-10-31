@@ -1,0 +1,17 @@
+.tab.active {
+    border: 4px solid #ea60aa !important;
+    color: #ea60aa !important;
+}
+.tab{
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    margin: 5px !important;
+    padding-bottom: 2px !important;
+    height: 45px !important;
+    border:3px solid #ffffff !important;
+    background-color: #fee6f4 !important;
+}
+.tabs-container{
+    height: auto !important;
+    padding: 5px !important;
+}

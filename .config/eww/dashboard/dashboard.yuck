@@ -1,0 +1,207 @@
+(defwidget profile []
+  (box :class "profile"
+       :orientation "h"
+       :space-evenly false
+       :spacing 3
+    (box :class "firstcol"
+         :orientation "h"
+         :space-evenly true
+      (image :path "/home/matsuko/waifu/hmmm.png"
+             :image-width 600
+             :image-height 430
+             :height 50)
+    )
+    (box :class "lastcol"
+         :orientation "h"
+         :space-evenly false
+         :hexpand false
+      (box :class "info"
+           :orientation "h"
+           :spacing 2
+           :space-evenly false
+           :vexpand true
+           :valign "center"
+      )
+    )
+  )
+)
+
+
+
+(defwidget divider []
+  (box :class "divider"
+       :orientation "v"
+       :space-evenly true)
+)
+
+(defwidget time []
+  (box :class "timebox"
+       :orientation "v"
+       :space-evenly false
+    (box :class "time-container"
+         :orientation "h"
+         :space-evenly false
+         :halign "center"
+         :valign "center"
+      (label :text "${lithour}" :class "content")
+      (divider)
+      (label :text "${litmin}" :class "content")
+      (label :text clock_period :class "clock_period_class")
+    )
+    (box :class "date-container"
+         :orientation "h"
+         :space-evenly true
+         :halign "center"
+      (label :text "${completeday}")
+    )
+  )
+)
+
+
+
+
+(defwidget clock_module []
+  (eventbox :onhover "${eww} update time_rev=true"
+            :onhoverlost "${eww} update time_rev=false"
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "0" :halign "center"
+      (label :text clock_date :class "clock_date_class")
+      (label :text clock_time :class "clock_time_class")
+      (label :text ":" :class "clock_time_sep")
+      (label :text clock_minute :class "clock_minute_class")
+      (label :text clock_period :class "clock_period_class") ;; Add AM/PM label here
+      (revealer :transition "slideleft"
+                :reveal time_rev
+                :duration "35ms"
+      )
+    )
+  )
+)
+
+
+(defwidget music []
+  (box :class "music-box"
+       :orientation "h"
+       :spacing 20
+       :space-evenly false
+    (box :class "firstcol"
+         :orientation "v"
+         :space-evenly true
+         :halign "start"
+         :valign "center"
+      (box :class "picture"
+           :orientation "v"
+           :space-evenly true
+           :style "background-image: url('${music_art_url}');"
+        music_art
+      )
+    )
+    (box :class "lastcol"
+         :orientation "v"
+         :space-evenly false
+         :spacing 7
+         :vexpand true
+         :hexpand true
+      (box :class "content"
+           :valign "start"
+           :orientation "v"
+           :halign "center"
+           :space-evenly false
+        (label :text "${music_title}" :class "title")
+        (label :text "${music_artist}" :class "artist")
+      )
+      (box :class "music-controls"
+           :orientation "h"
+           :space-evenly true
+           :spacing 6
+           :halign "center"
+           :hexpand false
+        (button :onclick "~/.config/eww/scripts/music/control.sh prev" "⏪︎")
+        (button :class "pause" :onclick "~/.config/eww/scripts/music/control.sh play-pause" "${music_status == 'Playing' ? '' : ''}")
+        (button :onclick "~/.config/eww/scripts/music/control.sh next" "⏩︎")
+      )
+    )
+  )
+)
+
+(defwidget controls []
+  (box :class "controls"
+       :orientation "v"
+       :space-evenly false
+       :spacing 7
+       :hexpand true
+    (box :class "content"
+         :orientation "v"
+         :halign "center"
+         :space-evenly true
+         :spacing 12
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "cpu-slider"
+        (box :class "cpu-label"
+          "")
+        (progress :value cpu
+               :min 0
+               :max 101))
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "memo-slider"
+        (box :class "memo-label"
+          "󰍛")
+        (progress :value memo
+               :min 0
+               :max 101))
+      (box :orientation "h"
+           :space-evenly "false"
+           :class "disk-slider"
+        (box :class "disk-label"
+          "🖴")
+        (progress :value disk
+               :min 0
+               :max 101))
+    ))
+)
+
+
+
+(defwidget cal []
+  (box :class "cal-box"
+       :orientation "h"
+       :monitor 0
+       :space-evenly true
+       :hexpand true
+    (calendar :class "cal"
+              :day calendar_day
+              :month calendar_month
+              :year calendar_year)
+  )
+)
+
+
+(defwidget dashboard []
+  (box :class "dashboard"
+       :orientation "v"
+       :monitor 0
+       :space-evenly false
+       :spacing 12
+
+    (sys_side)
+    (time)
+    (controls)
+    (music)
+    (profile)
+  )
+)
+
+
+(defwindow dashboard
+  :monitor 0
+  :geometry (geometry :x "6px"
+                      :y "20px"
+                      :width "320px"
+                      :height "0px"
+                      :anchor "top left")
+  :wm-ignore true
+  :type "dock"
+(dashboard))
+
+

@@ -1,0 +1,40 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.experimental.editSessions.enabled": true,
+    "window.openFilesInNewWindow": "off",
+    "window.newWindowDimensions": "offset",
+    "window.restoreFullscreen": true,
+    "window.restoreWindows": "preserve",
+    "terminal.integrated.enablePersistentSessions": true,
+    "workbench.editor.restoreViewState": true,
+    "notebook.backup.sizeLimit": 1000000000,
+    "files.hotExit": "onExitAndWindowClose",
+    "workbench.colorTheme": "Huacat Pink Theme",
+    "editor.minimap.size": "fit",
+    "background.enabled": true,
+    "vscode_custom_css.imports": [
+        "file:///home/matsuko/Documents/Code/Theme.css"
+    ],
+    "editor.fontSize": 19,
+    "vscord.app.name": "Visual Studio Code",
+    "vscord.app.privacyMode.enable": true,
+    "vscord.status.state.text.editing": "Editing a file {file_extension}:{current_line}:{current_column}",
+    "vscord.status.state.text.viewing": "Viewing a file {file_extension}",
+    "vscord.status.details.text.debugging": "Debugging a file {file_extension}",
+    "vscord.status.details.text.editing": "EHEHE TANOSHII KOTO SHIMASHO",
+    "vscord.status.details.text.viewing": "EHEHE TANOSHII KOTO SHIMASHO",
+    "vscord.status.state.text.debugging": "Debugging: a file",
+    "workbench.preferredDarkColorTheme": "Huacat Pink Theme",
+    "workbench.colorCustomizations": {
+        
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.location": "top",
+    "window.customTitleBarVisibility": "auto",
+    "window.menuBarVisibility": "hidden",
+    "workbench.commandPalette.history": 1000000000000,
+    "window.openFoldersInNewWindow": "off",
+    "files.autoSaveDelay": 10000,
+    "workbench.accounts.experimental.showEntitlements": true
+}

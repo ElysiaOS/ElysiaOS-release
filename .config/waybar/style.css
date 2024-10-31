@@ -1,0 +1,205 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-weight: bold;
+  font-family: hoyofont;
+  font-size: 13px;
+
+}
+
+window#waybar {
+  background: rgba(92, 83, 109, 0);
+}
+
+tooltip {
+  background: #1e1e2e;
+  opacity: 0.8;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+tooltip label {
+  color: #fee6f4;
+}
+
+#workspaces {
+  padding: 3px 0px;
+  margin: 6px 3px;
+  border-radius: 10px;
+  border: solid 0px #fee6f4;
+  font-weight: normal;
+  font-style: normal;
+}
+
+#workspaces button {
+  padding: 6px 4px;
+  margin: 8px 3px;
+  border-radius: 15px;
+  color: #ea60aa;
+  background-color: #ea60aa;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  color: #fee6f4;
+  background-color: #fee6f4;
+  border-radius: 16px;
+  min-width: 50px;
+  background-size: 400% 400%;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  background-color: #fee6f4;
+  color: #fee6f4;
+  border-radius: 16px;
+  min-width: 50px;
+  background-size: 400% 400%;
+}
+
+
+#window {
+  padding: 6px 2px;
+  margin: 6px 3px;
+  border-radius: 80px;
+  margin: 16px 15px 18px 5px;
+  color: #ffffff;
+  background-color: #ea60aa;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+.modules-right {
+  background-color: #ea60aa;
+  background-image: linear-gradient(62deg, #fee6f4 0%, #ea60aa 100%);
+  color:  #1E1E2E;
+  padding: 4px 6px;
+  border-radius: 18px;
+  font-weight: bold;
+  margin: 11px 10px 18px 10px;
+}
+
+#clock,
+#cpu,
+#tray,
+#custom-volume,
+#network,
+#custom-temp,
+#pulseaudio,
+#backlight,
+#upower,
+#cava
+#custom-power {
+  margin: 0px 3px;
+  font-size: 14px;
+}
+
+#custom-logo {
+  background-image: url('/home/matsuko/.config/waybar/icons/elylogopink3.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ea60aa;
+  background-size: 23px;
+  color:  #1E1E2E;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+}
+
+
+.modules-center{
+  background-color: #ea60aa;
+  background-image: linear-gradient(62deg, #fee6f4 0%, #ea60aa 100%);
+  color:  #ffffff;
+  padding: 4px 6px;
+  border-radius: 18px;
+  font-weight: bold;
+  margin: 11px 10px 18px 10px;
+}
+
+
+.icon {
+    font-size: 50px; /* Adjust the size as needed */
+}
+
+#network {
+  min-width: 60px;
+}
+
+
+
+#pulseaudio-slider slider {
+  background: #fee6f4;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#pulseaudio-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  background: #1E1E2E;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: #ea60aa;
+}
+
+#backlight-slider slider {
+  background: #fee6f4;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#backlight-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  background: #1E1E2E;
+}
+
+#backlight-slider highlight {
+  border-radius: 8px;
+  background-color: #ea60aa;
+}
+
+#pulseaudio {
+  background-image: url('/home/matsuko/.config/waybar/icons/audio-headphones.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 17px;
+}
+
+#backlight {
+  background-image: url('/home/matsuko/.config/waybar/icons/sun.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 14px;
+}
+
+#custom-swaync {
+  background-image: url('/home/matsuko/.config/waybar/icons/alerts.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 15px;
+}
+
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}

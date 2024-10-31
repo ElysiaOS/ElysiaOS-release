@@ -1,0 +1,37 @@
+(defwidget cal []
+  (box :class "cal-box"
+       :orientation "h"
+       :monitor 0
+       :space-evenly true
+       :hexpand true
+    (calendar :class "cal"
+              :day calendar_day
+              :month calendar_month
+              :year calendar_year)
+  )
+)
+
+
+
+(defwidget calender []
+  (box :class "calender"
+       :orientation "v"
+       :monitor 0
+       :space-evenly false
+       :spacing 12
+    (cal)
+  )
+)
+
+
+
+(defwindow calender
+  :monitor 0
+  :geometry (geometry :x "6px"
+                      :y "18px"
+                      :width "320px"
+                      :height "0px"
+                      :anchor "top right")
+  :wm-ignore true
+  :type "dock"
+(cal))

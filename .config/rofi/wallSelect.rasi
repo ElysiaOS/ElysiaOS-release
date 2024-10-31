@@ -1,0 +1,88 @@
+configuration {
+    modi:                        "drun";
+    show-icons:                  true;
+}
+
+//----- Global Properties -----//
+
+* {
+    main-bg: rgba(234, 96, 170, 0.2);
+    main-fg: #fbf1c7;
+    select-bg: #ea60aa;
+    select-fg: #282828;
+}
+
+//----- Main Window -----//
+
+window {
+    enabled:                     true;
+    fullscreen:                  false;
+    width:                       98%;
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               26px;
+    border-color:                transparent;
+    background-color:            transparent;
+}
+
+//----- Main Box -----//
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "listview" ];
+    background-color:            @main-bg;
+}
+
+//----- Listview -----//
+
+listview {
+    enabled:                     true;
+    columns:                     6;           // Number of items per row
+    lines:                       1;           // Displaying only one row
+    spacing:                     26px;        // Space between items
+    padding:                     56px;        // Padding around the list
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   true;
+    layout:                      vertical;   // Ensure horizontal layout
+    reverse:                     false;       // Keep the order normal
+    fixed-height:                true;        // Keep height fixed
+    fixed-columns:               true;        // Ensure columns are fixed
+    cursor:                      "default";
+    background-color:            transparent;
+}
+
+//----- Elements -----//
+
+element {
+    enabled:                     true;
+    orientation:                 vertical;   // Ensure elements are horizontal
+    spacing:                     40px;         // Space between elements
+    padding:                     10px;         // Padding around elements
+    border-radius:               26px;        // Rounded corners
+    cursor:                      pointer;
+    background-color:            transparent;
+}
+
+element selected.normal {
+    background-color:            @select-bg;
+}
+
+element-icon {
+    size:                        33%;            // Adjust size as needed
+    cursor:                      inherit;
+    border-radius:               26px;
+    background-color:            transparent;
+}
+
+element-text {
+    vertical-align:              0;         // Center vertically
+    horizontal-align:            0;         // Center horizontally
+    padding:                     0px;        // No padding
+    cursor:                      inherit;
+    background-color:            transparent; // Ensure background is transparent
+    text-color:                  transparent; // Hide text
+}

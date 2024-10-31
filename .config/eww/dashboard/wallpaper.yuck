@@ -1,0 +1,30 @@
+    (defwidget wallpaper [] 
+      (box :orientation "v" :space-evenly "false"
+        (box :orientation "h" :halign "center" :class "sysbtn3" :space-evenly "true"
+        (box :orientation "v" :halign "center" :class "sysbtn3" :space-evenly "true"
+          (button :class "wall1" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper1.png
+" :timeout "60s" "" )
+          (button :class "wall2" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper2.jpg" :timeout "60s" "")
+          (button :class "wall3" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper3.png" :timeout "60s" "")
+          (button :class "wall4" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper4.jpg" :timeout "60s" "")
+          (button :class "wall5" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper5.png" :timeout "60s" "")
+          (button :class "wall6" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper6.png" :timeout "60s" "")
+          (button :class "wall16" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper16.jpg" :timeout "60s" "")
+          (button :class "wall7" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper7.png" :timeout "60s" ""))
+        (box :orientation "v" :halign "center" :class "sysbtn3" :space-evenly "true" 
+          (button :class "wall8" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper8.jpg" :timeout "60s" "" )
+          (button :class "wall9" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper9.jpg" :timeout "60s" "")
+          (button :class "wall10" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper10.jpg" :timeout "60s" "")
+          (button :class "wall11" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper11.jpg" :timeout "60s" "")
+          (button :class "wall12" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper12.jpg" :timeout "60s" "")
+          (button :class "wall13" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper13.png" :timeout "60s" "")
+          (button :class "wall15" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper15.jpg" :timeout "60s" "")
+          (button :class "wall14" :onclick "swww img --transition-type grow --transition-step 5 --transition-fps 30 /home/matsuko/.wallpaper/Wallpaper14.png" :timeout "60s" "")))))
+  
+
+
+
+    (defwindow wallpaper 
+                :geometry (geometry :x "12px" :y "10px" :width "150px" :height "65px" :anchor "top right")
+                :monitor 0
+                                (wallpaper))

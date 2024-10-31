@@ -1,0 +1,81 @@
+* {
+  all: unset;
+}
+window {
+  border-radius: 21px;
+  background-color: rgba(234, 96, 170, 0.3);
+  color: #d6cbf6;
+  font-family: Museo Sans;
+}
+
+button {
+  all: unset;
+  padding: 10px;
+}
+
+.search-side {
+  border-radius: 12px;
+  background-color: rgba(238, 178, 207, 0.5);
+  margin: 20px 30px 20px 30px;
+}
+.search-side:hover {
+  color: #D35D6E;
+}
+.sysbtn button {
+  font-size: 30px;
+}
+.sysbtn2 button {
+  font-size: 10px;
+}
+
+.visual-studio-code{
+  background-image: url('/home/matsuko/.config/eww/icons/visual-studio-code.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 36px;
+  color: rgba(238, 178, 207, 0);
+}
+.moonlight-side{
+  background-image: url('/home/matsuko/.config/eww/icons/moonlight_stream.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  color: rgba(238, 178, 207, 0);
+}
+
+.stargame-side{
+  background-image: url('/home/matsuko/.config/eww/icons/StarRail.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  color: rgba(238, 178, 207, 0);
+}
+.re1999-side{
+  background-image: url('/home/matsuko/.config/eww/icons/re1999.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  color: rgba(238, 178, 207, 0);
+}
+.games-side{
+  background-image: url('/home/matsuko/.config/eww/icons/wwicon.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  color: rgba(238, 178, 207, 0);
+}
+.krita-side{
+  background-image: url('/home/matsuko/.config/eww/icons/krita.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  color: rgba(238, 178, 207, 0);
+}
+.logout-side{
+  background-image: url('/home/matsuko/.config/eww/icons/emblem-readonly.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 36px;
+  color: rgba(238, 178, 207, 0);
+}
+

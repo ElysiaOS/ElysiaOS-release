@@ -1,0 +1,140 @@
+@define-color bg-1 rgba(234, 96, 170, 0.5); /* Adjusted alpha for transparency */
+@define-color noti-bg rgba(17, 17, 27, 0.1); /* Adjusted alpha for transparency */
+@define-color noti-bg-darker rgba(43, 43, 57, 0.0); /* Adjusted alpha for transparency */
+@define-color mpris-bg-darker rgba(43, 43, 57, 0.2); /* Adjusted alpha for transparency */
+@define-color mpris-bg-darker-buttons rgba(37, 27, 127, 0.8); /* Adjusted alpha for transparency */
+@define-color noti-bg-hover rgba(27, 27, 43, 0.6); /* Adjusted alpha for transparency */
+@define-color noti-bg-focus rgba(27, 27, 27, 0.6);
+@define-color noti-close-bg rgba(255, 255, 255, 0.1);
+@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
+@define-color text-color rgba(27, 27, 43, 1);
+
+* {
+  color: #000;
+
+  all: unset;
+  font-size: 18px;
+  font-family: "Hoyofont";
+  transition: 200ms;
+}
+
+.notification-row {
+  outline: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.notification {
+  background: rgba(234, 96, 170, 0.5);
+  border: 3px solid #eb71dc;
+  border-radius: 16px;
+  margin: 23px -2px 30px 10px;
+}
+
+.notification-content {
+  border-radius: 10px;
+}
+
+.notification-default-action {
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.close-button {
+  background: rgba(247, 118, 142, 0.8); /* Adjusted alpha for transparency */
+  color: @bg-1;
+  text-shadow: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.close-button:hover {
+  box-shadow: none;
+  background: rgba(247, 118, 142, 0.8); /* Adjusted alpha for transparency */
+  transition: all 0.15s ease-in-out;
+  border: none;
+}
+
+.notification-action {
+  border: 2px solid @bg-1;
+  border-top: none;
+  border-radius: 10px;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+  color: #eeb2cf;
+  background: @bg-1;
+}
+
+.notification-default-action {
+  border-radius: 10px;
+  margin: 0px;
+}
+
+.notification-default-action:not(:only-child) {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.notification-action:first-child {
+  border-bottom-left-radius: 12px;
+  background: rgba(27, 27, 43, 0.2); /* Adjusted alpha for transparency */
+}
+
+.notification-action:last-child {
+  border-bottom-right-radius: 12px;
+  background: rgba(27, 27, 43, 0.2); /* Adjusted alpha for transparency */
+}
+
+
+
+.image {
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.summary {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(227 ,126 , 158, 1);
+  text-shadow: none;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification .notification-content {
+  margin: 8px;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
+  min-height: 3.4em;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background-color: #eeb2cf;
+  border: 2px solid @bg-1;
+  color: #000;
+}
+
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+  background-color: @bg-1;
+}
+
+
+
+
+
+.floating-notifications.background .notification-row .notification-background .close-button:active {
+  background-color: @bg-1;
+}
+
+.notification.critical progress {
+  background-color: @bg-1;
+}
+
+.notification.low progress,
+.notification.normal progress {
+  background-color: @bg-1;
+}
