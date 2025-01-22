@@ -8,13 +8,13 @@ GLYPH_FONT_FAMILY="Symbols Nerd Font Mono" # Set to your desired symbols font
 # Those are glyphs that will be always visible at left side of module.
 GLYPHS = {
     "paused": "",
-    "playing": "󰎈 ",
-    "stopped": "󰎈 "
+    "playing": " ",
+    "stopped": " "
 }
 DEFAULT_GLYPH = ""  # Glyph when status is unknown or default
 TEXT_WHEN_STOPPED = "Nothing playing rn"  # Text to display when nothing is playing
 SCROLL_TEXT_LENGTH = 25  # Length of the song title part (excludes glyph and space)
-REFRESH_INTERVAL = 0.7  # How often the script updates (in seconds)
+REFRESH_INTERVAL = 0.3  # How often the script updates (in seconds)
 PLAYERCTL_PATH = "/usr/bin/playerctl" # Path to playerctl, use which playerctl to find yours.
 
 # Function to get player status using playerctl

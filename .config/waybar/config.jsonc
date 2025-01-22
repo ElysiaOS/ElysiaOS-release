@@ -8,29 +8,44 @@
     "modules-left": [
         "custom/logo",
         "hyprland/workspaces",
+        "custom/game-icon",
         "hyprland/window"
     ],
     "modules-center": [
+        "image#album-art",
         "custom/mpris",
         "cava"
     ],
     "modules-right": [
         "group/group-tray",
         "custom/pic",
+        "custom/workelysia",
         "network",
-        "custom/temp",
+        "group/hardware",
         "group/expand-3",
         "group/expand-2",
-        "upower",
+        "battery",
         "clock",
         "custom/swaync"
     ],
+    "custom/game-icon": {
+    "format": "   ",
+    "interval": 1,
+    "tooltip": false,
+    "class": "game-icon"
+    },
     "hyprland/window": {
-        "format": " {title}  ",
+        "format": " {}  ",
+        "rewrite": {
+        "(.*) — Ablaze Floorp": "﴿ $1",
+        "(.*) - Moonlight(.*)": "Moonlight  ",
+        "(.*)Honkai: Star Rail(.*)": "🎮 Honkai: Star Rail"
+    },
+        "separate-outputs": true,
         "icon": true,
-        "icon-size": 16,
+        "icon-size": 12,
         "max-length": 30,
-        "tooltip": false,
+        "tooltip": false
     },
     "wlr/taskbar": {
         "format": "{icon}",
@@ -47,6 +62,15 @@
             "click-to-reveal": false
         },
         "modules": ["backlight", "backlight/slider"]
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-power",
+            "transition-to-left": true
+        },
+        "modules": ["custom/temp", "cpu"]
     },
     "group/expand-3": {
         "orientation": "horizontal",
@@ -66,7 +90,7 @@
             "transition-to-left": true,
             "click-to-reveal": false
         },
-        "modules": ["custom/menu", "custom/trayicon","tray"]
+        "modules": ["custom/menu", "custom/trayicon","tray","custom/recorder"]
     },
      "custom/menu":{
         "format": "󰅃",
@@ -76,10 +100,15 @@
         "format": " ",
     },
     "custom/pic": {
-        "format": "🌸 ",
+        "format": "           ",
         "tooltip-format": "Right click for wallpaper menu",
         "on-click": "~/Scripts/wallpaper.sh",
         "on-click-right": "~/.config/rofi/scripts/rofi-wallpaper.sh"
+    },
+    "custom/workelysia": {
+        "format": "     ",
+        "tooltip-format": "Secret Elysia basement",
+        "on-click": "hyprctl dispatch togglespecialworkspace 'elysia'"
     },
     "pulseaudio/slider": {
         "min": 5,
@@ -99,19 +128,22 @@
     "hyprland/workspaces": {
         "active-only": false,
         "all-outputs": true,
+        "format-window-separator": "",
+        "window-rewrite-default": "⩓",
         "disable-scroll": false,
         "on-scroll-up": "hyprctl dispatch workspace e-1",
         "on-scroll-down": "hyprctl dispatch workspace e+1",
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {
+            "1": "",
             "urgent": "",
             "active": "",
             "default": "",
             "sort-by-number": true
         },
         "persistent-workspaces": {
-            "*": 5
+            "*": 2
         }
     },
     "backlight": {
@@ -127,19 +159,35 @@
         "min-length": 2
     },
     "cpu": {
-        "interval": 3,
-        "format": "  {usage}%",
-        "format-alt": "  {avg_frequency} GHz",
-    },
-    "upower": {
-        "icon-size": 20,
-        "hide-if-empty": true,
-        "tooltip": true,
-        "tooltip-spacing": 20
-    },
+        "interval": 1,
+        "on-click-right": "kitty btop",
+        "format": "   {icon0}{icon1}{icon2}{icon3}{icon4}",
+        "format-icons": [
+           "<span color='#69ff94'>▁</span>",
+           "<span color='#2aa9ff'>▂</span>",
+           "<span color='#f8f8f2'>▃</span>",
+           "<span color='#f8f8f2'>▄</span>",
+           "<span color='#ffffa5'>▅</span>",
+           "<span color='#ffffa5'>▆</span>",
+           "<span color='#ff9977'>▇</span>",
+           "<span color='#dd532e'>█</span>" 
+        ]
+       },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-icons": ["󱊡", "󱊡", "󱊡", "󱊡", "󱊢", "󱊢", "󱊢", "󱊢", "󱊢", "󱊣"],
+        "max-length": 25
+      },
     "memory": {
         "interval": 3,
-        "format": "󰍛 {}%",
+        "format": "󰍛 {used:0.1f}GB",
         "max-length": 10
     },
     "tray": {
@@ -151,17 +199,17 @@
         "on-click": "/home/matsuko/.config/eww/toggle_calender.sh",
     },
     "network": {
-        "format-wifi": "{icon} 󰇚{bandwidthDownBytes} ",
+        "format-wifi": "      {bandwidthDownBytes} ",
         "format-icons": [
-            "󰤯",
-            "󰤟",
-            "󰤢",
-            "󰤥",
-            "󰤨"
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected"
         ],
-        "format-ethernet": "󰀂  󰇚{bandwidthDownBytes} ",
+        "format-ethernet": "      {bandwidthDownBytes}",
         "format-alt": "󱛇",
-        "format-disconnected": "󰖪",
+        "format-disconnected": "     Disconnected",
         "tooltip-format-wifi": "{icon} {essid} right click menu",
         "tooltip-format-ethernet": "󰀂  {ifname}",
         "tooltip-format-disconnected": "Disconnected",
@@ -200,7 +248,19 @@
         "format": "🌡 {}",
         "exec": "sensors | grep '^CPU:' | awk '{print $2}'",
         "interval": 2,
-        "on-click": "gnome-terminal -- sensors"
+        "on-click": "gnome-terminal -- sensors",
+        "on-click-right": "kitty btop"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {status}",
+        "format-connected-battery": "  {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "~/.config/rofi/scripts/bluetooth.sh",
+        "max-length": 20
     },
     "cava": {
         "framerate": 10,
@@ -227,6 +287,16 @@
     "format": "{} ",
     "return-type": "json",
     "on-click": "playerctl play-pause",
-    "on-click-right": "~/.config/eww/toggle_music.sh"
+    "on-click-right": "/home/matsuko/Scripts/musicd.sh"
+    },
+    "custom/recorder": {
+    "exec": "~/.config/waybar/Scripts/gpu_record.sh",
+    "interval": 2
+    },
+    "image#album-art": {
+     "path": "/tmp/cover.jpeg",
+     "exec": "~/Scripts/album_waybar.sh",
+     "size": 28,
+     "interval": 2
     }
 }

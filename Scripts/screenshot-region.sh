@@ -1,15 +1,28 @@
 #!/bin/bash
 
-# Take a screenshot of the selected region and save it with a timestamp
-screenshot="$HOME/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%S').png"
-grim -g "$(slurp)" "$screenshot" && wl-copy < "$screenshot"
+# Get the class of the currently active window
+window=$(hyprctl activewindow | awk -F': ' '/initialClass:/ {print $2}' | xargs)
 
-# Send a notification with the screenshot name and a "Copy" button
-notify-send "Screenshot taken" "$screenshot" --action=copy:"Copy"
+# Fallback for unknown window class
+if [ -z "$window" ]; then
+    window="Unknown"
+fi
 
-# Wait for the "Copy" action to be triggered
-gdbus call --session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications --method org.freedesktop.Notifications.GetCapabilities | grep -q "actions"
+# Define the screenshot path with a timestamp and the window class
+screenshot="$HOME/Pictures/Screenshots/$window$(date '+%y%m%d_%H-%M-%S').png"
 
-# After "Copy" button is clicked, copy the screenshot to the clipboard again
-wl-copy < "$screenshot"
-notify-send "Screenshot copied to clipboard" "Elysia says thank you"
+# Take a screenshot of the selected region
+if grim -g "$(slurp)" "$screenshot"; then
+    # Copy the screenshot to the clipboard
+    wl-copy < "$screenshot"
+
+    # Send a notification with the screenshot name, a "Copy" button, and the screenshot as an icon
+    notify-send "Elysia" "$screenshot" --icon="$screenshot" 
+
+    # Wait for the "Copy" action to be triggered
+    gdbus call --session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications --method org.freedesktop.Notifications.GetCapabilities | grep -q "actions" && wl-copy < "$screenshot"
+
+else
+    # Notify user of failure
+    notify-send ""
+fi

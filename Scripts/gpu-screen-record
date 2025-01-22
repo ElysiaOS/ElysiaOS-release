@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Variables
+VIDEO_DIR="$HOME/Videos"
+FILENAME="Recording_$(date '+%y%m%d_%H-%M-%S').mp4"
+VIDEO_PATH="$VIDEO_DIR/$FILENAME"
+NOTIFY_TITLE="Elysia"
+PROCESS_NAME="gpu-screen-recorder"
+
+# Functions
+start_recording() {
+    mkdir -p "$VIDEO_DIR"  # Ensure the Videos directory exists
+    gpu-screen-recorder -w eDP-1 -c mp4 -k h264 -ac opus -f 30 \
+        -cursor yes -restore-portal-session yes -cr full \
+        -encoder cpu -o "$VIDEO_PATH" -q medium -a "default_output|default_input" &
+    echo $! > /tmp/$PROCESS_NAME.pid  # Store the process ID
+    notify-send "$NOTIFY_TITLE" "Recording started..." --icon=preferences-desktop-display
+}
+
+
+stop_recording() {
+    if [[ -f /tmp/$PROCESS_NAME.pid ]]; then
+        kill -SIGINT "$(cat /tmp/$PROCESS_NAME.pid)"
+        rm /tmp/$PROCESS_NAME.pid
+        notify-send "$NOTIFY_TITLE" "Recording saved: $VIDEO_PATH"
+    else
+        notify-send "$NOTIFY_TITLE" "No recording process found!" --icon=dialog-warning
+    fi
+}
+
+# Main toggle logic
+if pgrep -f "$PROCESS_NAME" > /dev/null; then
+    stop_recording
+else
+    start_recording
+fi

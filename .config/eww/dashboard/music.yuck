@@ -1,8 +1,9 @@
-(defwidget music []
-  (box :class "music-box"
-       :orientation "h"
+(defwidget musics []
+  (box :class "music-boxs"
+       :orientation "v"
        :spacing 20
        :space-evenly false
+       :style "background-image: url('${music_art_url}'); background-position: center; background-size: cover;"
     (box :class "firstcol"
          :orientation "v"
          :space-evenly true
@@ -11,7 +12,6 @@
       (box :class "picture"
            :orientation "v"
            :space-evenly true
-           :style "background-image: url('${music_art_url}');"
         music_art
       )
     )
@@ -32,12 +32,12 @@
       (box :class "music-controls"
            :orientation "h"
            :space-evenly true
-           :spacing 6
+           :spacing 10
            :halign "center"
            :hexpand false
-        (button :onclick "~/.config/eww/scripts/music/control.sh prev" "⏪︎")
+        (button :class "prev" :onclick "~/.config/eww/scripts/music/control.sh prev" "⏪︎")
         (button :class "pause" :onclick "~/.config/eww/scripts/music/control.sh play-pause" "${music_status == 'Playing' ? '' : ''}")
-        (button :onclick "~/.config/eww/scripts/music/control.sh next" "⏩︎")
+        (button :class "next" :onclick "~/.config/eww/scripts/music/control.sh next" "⏩︎")
       )
     )
   )
@@ -51,17 +51,18 @@
        :monitor 0
        :space-evenly false
        :spacing 12
-    (music)
+       :onhoverlost "/home/matsuko/Scripts/musicd.sh"
+    (musics)
   )
 )
 
 (defwindow musicbox
   :monitor 0
-  :geometry (geometry :x "780px"
-                      :y "15px"
-                      :width "360px"
-                      :height "0px"
+  :geometry (geometry :x "770px"
+                      :y "12px"
+                      :width "380px"
+                      :height "120px"
                       :anchor "top left")
   :wm-ignore true
   :type "dock"
-(music))
+(musics))

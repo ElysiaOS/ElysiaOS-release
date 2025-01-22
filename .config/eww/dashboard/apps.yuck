@@ -3,11 +3,11 @@
         (box :orientation "h" :halign "center" :class "sysbtn" :space-evenly "true" 
           (button :class "visual-studio-code" :onclick "code-oss & eww close-all" :timeout "60s" "")
           (button :class "moonlight-side" :onclick "flatpak run com.moonlight_stream.Moonlight & eww close-all" :timeout "60s" "")
-          (button :class "stargame-side" :onclick "/home/matsuko/Scripts/stargame.sh & eww close-all" :timeout "60s" "")
-          (button :class "re1999-side" :onclick "/home/matsuko/Scripts/re1999.sh & eww close-all" :timeout "60s" "")
+          (button :class "stargame-side" :onclick "~/Scripts/stargame.sh & eww close-all" :timeout "60s" "")
+          (button :class "re1999-side" :onclick "~/Scripts/re1999.sh & eww close-all" :timeout "60s" "")
           (button :class "games-side" :onclick "rofi -no-lazy-grab -show drun & eww close-all" :timeout "60s" "")
           (button :class "krita-side" :onclick "krita & eww close-all" :timeout "60s" "")          
-          (button :class "logout-side" :onclick "hyprlock & eww close-all" :timeout "60s" ""))))
+          (button :class "logout-side" :onclick "~/Scripts/gpu-screen-record & eww close-all" :timeout "60s" ""))))
   
 
 

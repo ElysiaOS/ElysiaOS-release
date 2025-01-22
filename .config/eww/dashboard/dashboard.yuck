@@ -3,9 +3,11 @@
        :orientation "h"
        :space-evenly false
        :spacing 3
+       :style "background-image: url('${dashboardbg_art_url}'); background-position: center; background-size: cover;"
     (box :class "firstcol"
          :orientation "h"
          :space-evenly true
+         :style "background-image: url('${dashboardbg_art}');"
       (image :path "/home/matsuko/waifu/hmmm.png"
              :image-width 600
              :image-height 430
@@ -141,7 +143,7 @@
           "")
         (progress :value cpu
                :min 0
-               :max 101))
+               :max 101)(label :class "CPULV" :text "${CPULV}%"))
       (box :orientation "h"
            :space-evenly "false"
            :class "memo-slider"
@@ -149,7 +151,8 @@
           "󰍛")
         (progress :value memo
                :min 0
-               :max 101))
+               :max 101)(label :class "MEMORYLV" :text "${MEMORYLV}%"))
+      
       (box :orientation "h"
            :space-evenly "false"
            :class "disk-slider"
@@ -157,7 +160,7 @@
           "🖴")
         (progress :value disk
                :min 0
-               :max 101))
+               :max 101)(label :class "DISKLV" :text "${DISKLV}%"))
     ))
 )
 

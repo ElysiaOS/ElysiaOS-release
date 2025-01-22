@@ -1,15 +1,3 @@
-.dashboard {
-  background-color: rgba(238, 178, 207, 0.4);
-  color: $fg;
-  padding: 0.9rem 0.5rem 0rem 0.4rem;
-  border-radius: 26px;
-  background-image: url('/home/matsuko/waifu/GYXpAawXoAACVyo.jpg');
-  background-position: bottom;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-size: 320px;
-
-}
 
 .profile {
   background-color: rgba(234, 96, 170, 0);
@@ -45,15 +33,17 @@
   }
 }
 
-.music-box {
+.music-boxs {
   background-color: $bgSecondary;
   padding: 10px;
+  color: #ffffff;
+  border: 4px solid #eb71dc;
   border-radius: 24px;
   .firstcol {
     .picture {
       min-height: 64px;
       min-width: 64px;
-      border-radius: 12px;
+      border-radius: 16px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -63,11 +53,11 @@
     font-family: Hoyofont;
     font-size: 14px;
     .title {
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bolder;
     }
     .artist {
-      color: $fg;
+      font-size: 18px;
     }
     .music-controls {
       font-family: Iosevka NF;
@@ -80,7 +70,16 @@
         &:active { background-color: $bg; }
       }
       .pause {
-        font-size: 26px;
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .prev {
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .next {
+        color: #ffffff;
+        font-size: 46px;
       }
     }
   }
@@ -196,46 +195,3 @@
   }
 }
 
-.cal-box {
-  font-family: Hoyofont;
-  background-color: $bgSecondary;
-  border-radius: 26px;
-  padding: 0px 1rem .2rem;
-  color: $fg;
-  background-color: rgba(234, 96, 170, 0.3);
-
-  .cal {
-    padding: .7rem .10rem 0rem;
-    margin-left: 10px;
-
-    & > * {
-      border: solid 0px transparent;
-    }
-    
-    &.highlight {
-      padding: 10rem;
-    }
-  }
-}
-
-calendar:selected {
-  color: $cyan;
-}
-
-calendar.header {
-  color: $cyan;
-  font-weight: bold;
-}
-
-calendar.button {
-  color: $green;
-}
-
-calendar.highlight {
-  color: $magenta;
-  font-weight: bold;
-}
-
-calendar:indeterminate {
-  color: $lightblack;
-}

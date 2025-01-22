@@ -2,88 +2,78 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "type": "kitty-direct",
-    "source": "~/.config/fastfetch/elylogo8bit.png",
+    "source": "~/.config/fastfetch/elyfish.png",
     "width": 30,
-    "height": 15
+    "height": 15,
+    "padding": {
+        "right": 1
+        }
   },
-    "display": {
-        "separator": "  "
-    },
-    "modules": [
-        {
-            "type": "custom",
-            "format": "    "
-        },
-        {
-            "type": "custom",
-            "key": "│🌷  ElysiaOS",
-            "keyColor": "red"
-        },
-        {
-            "type": "kernel",
-            "key": "│ ├",
-            "keyColor": "white"
-        },
-        {
-            "type": "packages",
-            "key": "│ ├󰏖",
-            "keyColor": "white"
-        },
-        {
-            "type": "shell",
-            "key": "│ └",
-            "keyColor": "white"
-        },
-        {
-            "type": "de",
-            "key": " DE",
-            "keyColor": "red"
-        },
-        {
-            "type": "wm",
-            "key": "│ ├",
-            "keyColor": "white"
-        },
-        {
-            "type": "terminal",
-            "key": "│ ├",
-            "keyColor": "white"
-        },
-        {
-            "type": "host",
-            "key": " PC",
-            "keyColor": "red"
-        },
-        {
-            "type": "cpu",
-            "key": "│ ├",
-            "keyColor": "white"
-        },
-        {
-            "type": "custom",
-            "key": "│ ├󰍛  AMD ATI Radeon RX 5700",
-            "keyColor": "white"
-        },
-        {
-            "type": "gpu",
-            "key": "│ ├󰍛",
-            "keyColor": "white"
-        },
-        {
-            "type": "memory",
-            "key": "│ ├󰑭",
-            "keyColor": "white"
-        },
-        {
-            "type": "player",
-            "key": "│ └󰥠",
-            "keyColor": "bright_"
-        },
-        {
-            "type": "media",
-            "key": "│ └󰝚",
-            "keyColor": "bright_"
-        },
-    ]
-}
+  "display": {
+    "separator": "-> "
+},
+"modules": [
+    "break",
 
+    {
+        "type": "os",
+        "format": "{2}",
+        "key": "System ",
+        "keyColor": "32",
+      },
+    
+    {
+        "type": "kernel",
+        "key": "KERNEL ",
+        "keyColor": "32"
+    },
+    {
+        "type": "packages",
+        "key": "Packages ",
+        "keyColor": "32",
+      },
+    {
+        "type": "wm",
+        "key": "WM ",
+        "keyColor": "32"
+    },
+    {
+        "type": "shell",
+        "key": "Shell ",
+        "keyColor": "32"
+    },
+    {
+        "type": "cpu",
+        "format": "{1} ({3}) @ {7} GHz",
+        "key": "CPU ",
+        "keyColor": "white",
+      },
+      {
+        "type": "gpu",
+        "format": "{2}",
+        "key": "GPU ",
+        "keyColor": "white",
+      },
+      {
+        "type": "memory",
+        "key": "Memory ",
+        "keyColor": "white",
+        "format": "{1} / {2}"
+    },
+    {
+        "type": "uptime",
+        "key": "Uptime ",
+        "keyColor": "white"
+    },
+    {
+        "type": "media",
+        "key": "Media ",
+        "keyColor": "white"
+    },
+    {
+        "type": "custom",
+        "format": "   \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[90m "
+    },
+    "break",
+]
+}

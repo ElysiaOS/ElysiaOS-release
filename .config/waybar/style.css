@@ -4,7 +4,7 @@
   min-height: 0;
   font-weight: bold;
   font-family: hoyofont;
-  font-size: 13px;
+  font-size: 14px;
 
 }
 
@@ -18,7 +18,7 @@ tooltip {
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: #11111b;
+  border-color: #f738bd;
 }
 
 tooltip label {
@@ -28,28 +28,41 @@ tooltip label {
 #workspaces {
   padding: 3px 0px;
   margin: 6px 3px;
-  border-radius: 10px;
-  border: solid 0px #fee6f4;
-  font-weight: normal;
-  font-style: normal;
+  border-radius: 80px;
+  border: solid 0px #ea60aa;
 }
 
 #workspaces button {
-  padding: 6px 4px;
+  padding: 4px 8px;
   margin: 8px 3px;
-  border-radius: 15px;
-  color: #ea60aa;
+  border-radius: 26px;
+  color: #ffffff;
   background-color: #ea60aa;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
 #workspaces button.active {
-  color: #fee6f4;
+  color: #ffffff;
   background-color: #fee6f4;
+  background-image: url('/home/matsuko/.config/waybar/icons/22.png');
   border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 42px;
   min-width: 50px;
-  background-size: 400% 400%;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+#workspaces button.default {
+  color: #ffffff;
+  background-color: #fee6f4;
+  background-image: url('/home/matsuko/.config/waybar/icons/19.png');
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 42px;
+  min-width: 50px;
+  transition: all 0.1s ease-in-out;
 }
 
 #workspaces button:hover {
@@ -57,13 +70,12 @@ tooltip label {
   color: #fee6f4;
   border-radius: 16px;
   min-width: 50px;
-  background-size: 400% 400%;
 }
 
 
 #window {
-  padding: 6px 2px;
-  margin: 6px 3px;
+  padding: 6px 3px 6px 4px;
+  margin: 6px 3px 2px 4px;
   border-radius: 80px;
   margin: 16px 15px 18px 5px;
   color: #ffffff;
@@ -74,25 +86,52 @@ window#waybar.empty #window {
   background-color: transparent;
 }
 
-.modules-right {
+#clock {
+  padding: 1px 6px;
+  margin: 17px 3px;
   background-color: #ea60aa;
-  background-image: linear-gradient(62deg, #fee6f4 0%, #ea60aa 100%);
-  color:  #1E1E2E;
-  padding: 4px 6px;
-  border-radius: 18px;
-  font-weight: bold;
-  margin: 11px 10px 18px 10px;
+  background-image: linear-gradient(62deg, #ea60aa 20%, #fee6f4 70%);
+  font-style: normal;
+  font-size: 12px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
 }
 
-#clock,
-#cpu,
+#custom-temp, #cpu, #memory {
+  background-color: #ea60aa;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+#custom-workelysia {
+  background-color: #ea60aa;
+  padding: 6px 8px;
+  margin: 16px 3px;
+  background-image: url('/home/matsuko/.config/waybar/icons/4.png');
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  border-radius: 21px;
+  min-width: 20px;
+}
+
+#battery {
+  background-color: #ea60aa;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
+}
+
 #tray,
 #custom-volume,
 #network,
-#custom-temp,
-#pulseaudio,
 #backlight,
-#upower,
+#bluetooth,
 #cava
 #custom-power {
   margin: 0px 3px;
@@ -111,7 +150,9 @@ window#waybar.empty #window {
   border-radius: 21px;
 }
 
-
+#image {
+  margin: 0px 5px;
+}
 .modules-center{
   background-color: #ea60aa;
   background-image: linear-gradient(62deg, #fee6f4 0%, #ea60aa 100%);
@@ -132,7 +173,6 @@ window#waybar.empty #window {
 }
 
 
-
 #pulseaudio-slider slider {
   background: #fee6f4;
   background-color: transparent;
@@ -147,6 +187,7 @@ window#waybar.empty #window {
   margin-bottom: -4px;
   border-radius: 8px;
   background: #1E1E2E;
+  
 }
 
 #pulseaudio-slider highlight {
@@ -177,23 +218,73 @@ window#waybar.empty #window {
 
 #pulseaudio {
   background-image: url('/home/matsuko/.config/waybar/icons/audio-headphones.png');
+  background-color: #ea60aa;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 21px;
 }
 
 #backlight {
   background-image: url('/home/matsuko/.config/waybar/icons/sun.png');
+  background-color: #ea60aa;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
   background-position: left;
   background-repeat: no-repeat;
-  background-size: 14px;
+  background-size: 21px;
+
 }
 
 #custom-swaync {
   background-image: url('/home/matsuko/.config/waybar/icons/alerts.png');
-  background-position: left;
+  background-color: #fee6f4;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: 15px;
+}
+
+#custom-pic {
+  background-image: url('/home/matsuko/.config/waybar/icons/bige.png');
+  background-color: #ea60aa;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 36px;
+}
+
+
+#network {
+  background-image: url('/home/matsuko/.config/waybar/icons/network.png');
+  background-color: #ea60aa;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
+
+
+
+.recording {
+  color: #1E1E2E;
+}
+.idle {
+  color: gray;
+}
+
+#custom-recorder {
+  color: #f01242;
+  font-size: 21px;
 }
 
 

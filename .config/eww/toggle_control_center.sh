@@ -3,7 +3,7 @@
 state=$(eww get open_dashboard)
 
 open_dashboard() {
-    if [[ -z $(eww windows | grep '*dashboard') ]]; then
+    if [[ -z $(eww active-windows | grep '*dashboard') ]]; then
         eww open dashboard
     fi
     eww update open_dashboard=true
@@ -12,7 +12,8 @@ open_dashboard() {
 close_dashboard() {
     if [[ -z $(eww windows | grep '*dashboard') ]]; then
         eww close dashboard
-        eww close dashboard
+        pkill eww
+        eww daemon
     fi
     eww update open_dashboard=false
 

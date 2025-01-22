@@ -17,8 +17,6 @@ alias ls='ls --color=auto'
 alias chmx='chmod +x'
 #search filenames
 alias fgr='find | grep'
-alias winege='~/Games/lutris-GE-Proton8-26-x86_64/bin/wine'
-alias parsecd='python3 ~/Scripts/ParsecDiscord.py'
 alias grep='grep --color=auto'
 alias targz='tar xzvf'
 alias tarn='tar xvf'
@@ -26,7 +24,6 @@ alias theme='xfce4-appearance-settings'
 alias py='python3'
 alias pystart='python -m venv ~/myenv
 source ~/myenv/bin/activate'
-alias tweetdown='~/Scripts/tweetdown.sh'
 alias rm='rm -i'
 alias ely='kitty +kitten icat ~/bin/elyspin.gif'
 
