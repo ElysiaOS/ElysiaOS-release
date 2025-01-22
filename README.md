@@ -38,7 +38,7 @@
 | <kbd>Super</kbd> + <kbd>V</kbd> | Toggle float a window |
 | <kbd>Super</kbd> + <kbd>D</kbd> | Launch text editor VSCODE |
 | <kbd>Super</kbd> + <kbd>E</kbd> | Launch File manager Thunar |
-| <kbd>Super</kbd> + <kbd>O</kbd> | Launch Google Chrome |
+| <kbd>Super</kbd> + <kbd>O</kbd> | Launch Floorp |
 | <kbd>Super</kbd> + <kbd>D</kbd> | Launch text editor VSCODE |
 | <kbd>Super</kbd> + <kbd>PRINTSC</kbd> | Take a full screenshot |
 | <kbd>Super</kbd> + <kbd>S</kbd> | Take a region screenshot |
@@ -58,3 +58,4 @@
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
 - **Theme**: `Use the themes in .themes`
 - **Icons**: 'Currently cannot provide them but you can get them from [here](https://ko-fi.com/s/e3be105b94)'
+- **Cursors**: '[1st](https://ko-fi.com/s/58bc1bc84c) [2nd](https://www.pixiv.net/en/users/16588440) both in .icons'
