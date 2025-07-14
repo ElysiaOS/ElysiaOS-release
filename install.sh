@@ -80,7 +80,7 @@ PACKAGES=(
   qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct noto-fonts
   visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard
-  libnotify clipnotify copyq playerctl
+  libnotify clipnotify copyq playerctl brightnessctl
   zip libzip file-roller unzip thunar-archive-plugin
   sddm-eucalyptus-drop swaylock-effects auto-cpufreq python
   python-cairo python-installer python-numpy python-pillow python-pip
