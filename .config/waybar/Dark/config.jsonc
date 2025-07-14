@@ -1,0 +1,318 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": -6,
+    "margin-bottom": -25,
+    "spacing": 0,
+    "height": 65,
+    "modules-left": [
+        "custom/logo",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock",
+        "image#album-art",
+        "custom/mpris"
+    ],
+    "modules-right": [
+        "group/group-tray",
+        "custom/pic",
+        "custom/workelysia",
+        "network",
+        "custom/temp",
+        "group/expand-3",
+        "group/expand-2",
+        "battery",
+        "custom/swaync"
+    ],
+    "custom/game-icon": {
+    "format": "   ",
+    "interval": 1,
+    "tooltip": false,
+    "class": "game-icon"
+    },
+    "hyprland/window": {
+        "format": " {}  ",
+        "rewrite": {
+        "(.*) — Ablaze Floorp": "﴿ $1",
+        "(.*) - Moonlight(.*)": "Moonlight  ",
+        "(.*)Honkai: Star Rail(.*)": "🎮 Honkai: Star Rail"
+    },
+        "separate-outputs": true,
+        "icon": false,
+        "icon-size": 12,
+        "max-length": 30,
+        "tooltip": false
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "close",
+        "tooltip-format": "{title}"
+    },
+    "group/expand-2": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "not-power",
+            "transition-to-left": true,
+            "click-to-reveal": false
+        },
+        "modules": ["backlight", "backlight/slider"]
+    },
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "not-power",
+            "transition-to-left": true
+        },
+        "modules": ["custom/temp", "cpu"]
+    },
+    "group/expand-3": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "volume-slider",
+            "transition-to-left": true,
+            "click-to-reveal": false
+        },
+        "modules": ["pulseaudio", "pulseaudio/slider"]
+    },
+    "group/group-tray": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "children-class": "not-power",
+            "transition-to-left": true,
+            "click-to-reveal": false
+        },
+        "modules": ["custom/menu", "custom/trayicon","tray","custom/settings","custom/recorder"]
+    },
+     "custom/menu":{
+        "format": "󰅃",
+        "rotate": 90,
+    },
+    "custom/trayicon": {
+        "format": " ",
+    },
+    "custom/pic": {
+        "format": "           ",
+        "tooltip-format": "Right click for wallpaper menu",
+        "on-click": "~/Elysia/wallpaper/wallpaper.sh",
+        "on-click-right": "~/Elysia/wallpaper/Dark/d-rofi-wallpaper.sh"
+    },
+    "custom/workelysia": {
+        "format": "     ",
+        "tooltip-format": "Secret Elysia basement",
+        "on-click": "hyprctl dispatch togglespecialworkspace 'elysia'"
+    },
+    "pulseaudio/slider": {
+        "min": 5,
+        "max": 100,
+        "rotate": 0,
+        "device": "pulseaudio",
+        "scroll-step": 1,
+    },
+    "backlight/slider": {
+        "min": 5,
+        "max": 100,
+        "rotate": 0,
+        "device": "intel_backlight",
+        "scroll-step": 1,
+
+    },
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "format-window-separator": "",
+        "window-rewrite-default": "⩓",
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "urgent": "",
+            "active": "",
+            "default": "",
+            "sort-by-number": true
+        },
+        "persistent-workspaces": {
+            "*": 2
+        }
+    },
+    "backlight": {
+        "device": "light",
+        "rotate": 0,
+        "format": "    {percent}%",
+        "format-icons": [
+            "󰃜",
+            "󰃝",
+            "󰃞"
+        ],
+        "scroll-step": 1,
+        "min-length": 2
+    },
+    "cpu": {
+        "interval": 1,
+        "on-click-right": "kitty btop",
+        "format": "   {icon0}{icon1}{icon2}{icon3}{icon4}",
+        "format-icons": [
+           "<span color='#69ff94'>▁</span>",
+           "<span color='#2aa9ff'>▂</span>",
+           "<span color='#f8f8f2'>▃</span>",
+           "<span color='#f8f8f2'>▄</span>",
+           "<span color='#ffffa5'>▅</span>",
+           "<span color='#ffffa5'>▆</span>",
+           "<span color='#ff9977'>▇</span>",
+           "<span color='#dd532e'>█</span>" 
+        ]
+       },
+    "battery": {
+        "bat": "BAT1",
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "tooltip-format": "{}",
+        "format-icons": ["󱊡", "󱊡", "󱊡", "󱊡", "󱊢", "󱊢", "󱊢", "󱊢", "󱊢", "󱊣"],
+        "max-length": 25,
+        "tooltip": true
+      },
+    "memory": {
+        "interval": 3,
+        "format": "󰍛 {used:0.1f}GB",
+        "max-length": 10
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip": false,
+        "format": " {:%I:%M %p, %a} ",
+        "on-click": "~/.config/eww/toggle_calender.sh",
+    },
+    "network": {
+        "format-wifi": "      {bandwidthDownBytes} ",
+        "format-icons": [
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected",
+            "     Disconnected"
+        ],
+        "format-ethernet": "      {bandwidthDownBytes}",
+        "format-alt": "󱛇",
+        "format-disconnected": "     Disconnected",
+        "tooltip-format-wifi": "{icon} {essid} right click menu",
+        "tooltip-format-ethernet": "󰀂  {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click-right": "network_manager",
+        "interval": 3,
+        "nospacing": 0
+    },
+    "pulseaudio": {
+        "format": "     {volume}%",
+        "rotate": 0,
+        "format-muted": "婢",
+        "tooltip-format": "{icon} {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+         "default": ["", "", ""]
+        }
+    },
+    "custom/logo": {
+        "format": "    ",  // Using Unicode character U+842F
+        "interval": 1,
+        "tooltip": false,
+        "on-click": "wlogout",
+        "on-click-middle": "~/Elysia/Theme.sh"
+    },
+    "custom/swaync": {
+        "format": "      ",
+        "tooltip": false,
+        "on-click": "swaync-client -t"
+    },
+    "custom/temp": {
+        "format": "{}",
+        "exec": "~/.config/waybar/Scripts/temps.sh",
+        "return-type": "json",
+        "interval": 2,
+        "on-click": "gnome-terminal -- sensors",
+        "on-click-right": "kitty btop"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {status}",
+        "format-connected-battery": "  {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "~/.config/rofi/scripts/bluetooth.sh",
+        "max-length": 20
+    },
+    "cava": {
+        "framerate": 10,
+        "autosens": 1,
+        "hide_on_silence": true,
+        "sensitivity": 1.5,
+        "bars": 9,
+        "spacing": 4,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pulse",
+        "escape": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": true,
+        "noise_reduction": 0.77,
+        "input_delay": 1,
+        "format-icons" : ["▁ ", "▂ ", "▃ ", "▄ ", "▅ ","▆ ","▇ "," █ "],
+        "actions": {"on-click-right": "mode"}
+    },
+    "custom/mpris": {
+    "exec": "python3 -u ~/.config/waybar/Scripts/scrolling-mpris",
+    "format": "{} ",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "tooltip": true,
+    "tooltip-format": "{}",
+    "on-click-right": "~/.config/eww/toggle_music.sh"
+    },
+    "custom/settings": {
+    "exec": "~/.config/waybar/Scripts/sys.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "~/Elysia/elysettings",
+    "interval": 2
+    },
+    "custom/kew": {
+    "exec":"~/bin/kew-rpc",
+    "interval": 2
+    },
+    "custom/recorder": {
+    "exec": "~/.config/waybar/Scripts/gpu_record.sh",
+    "on-click": "~/.config/waybar/Scripts/gpu-screen-record",
+    "interval": 2
+    },
+    "image#album-art": {
+     "path": "/tmp/cover_waybar.png",
+     "exec": "~/.config/hypr/Scripts/album_waybar.sh",
+     "size": 26,
+     "interval": 2
+    }
+}

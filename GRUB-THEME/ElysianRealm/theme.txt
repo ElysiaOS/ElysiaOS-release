@@ -1,0 +1,24 @@
+title-text: ""
+desktop-image: "background.png"
+terminal-left: "20%"
+terminal-top: "0"
+terminal-border: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-font: "ElysiaOSNew Regular 12"
+
++ boot_menu {
+  left = 38%
+  top = 25%
+  width = 90%
+  height = 200%
+  item_color = "#fcc7ea"
+  item_font = "ElysiaOSNew Regular 30"
+  selected_item_color = "#fcc7ea"
+  item_padding = 2
+  item_spacing = 40
+  item_height = 140
+  selected_item_pixmap_style = "select_*.png"
+}
+
+

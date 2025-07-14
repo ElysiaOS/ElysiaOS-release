@@ -1,0 +1,57 @@
+
+
+
+.music-boxs {
+  background-color: $bgSecondary;
+  padding: 10px;
+  color: #ffffff;
+  border: 4px solid #a5b6cf;
+  border-radius: 24px;
+  .firstcol {
+    .picture {
+      min-height: 64px;
+      min-width: 64px;
+      border-radius: 16px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  .lastcol {
+    font-family: Hoyofont;
+    font-size: 14px;
+    .title {
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .artist {
+      font-size: 18px;
+    }
+    .music-controls {
+      font-family: Iosevka NF;
+      font-size: 18px;
+      button {
+        padding: 0px 6px;
+        border-radius: 7px;
+        transition: all ease .2s;
+        &:hover { background-color: $black; }
+        &:active { background-color: $bg; }
+      }
+      .pause {
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .prev {
+        color: #ffffff;
+        font-size: 46px;
+      }
+      .next {
+        color: #ffffff;
+        font-size: 46px;
+      }
+    }
+  }
+}
+
+
+

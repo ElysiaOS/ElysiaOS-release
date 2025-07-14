@@ -1,0 +1,17 @@
+    (defwidget sys_side [] 
+      (box :orientation "h" :space-evenly "false" 
+        (box :orientation "h" :halign "center" :class "sysbtn" :space-evenly "true" 
+          (button :class "theme-change" :onclick "~/Elysia/Theme.sh & eww close-all" :timeout "60s" "")
+          (button :class "moonlight-side" :onclick "flatpak run com.moonlight_stream.Moonlight & eww close-all" :timeout "60s" "")
+          (button :class "stargame-side" :onclick "~/Scripts/stargame.sh & eww close-all" :timeout "60s" "")
+          (button :class "re1999-side" :onclick "~/Scripts/re1999.sh & eww close-all" :timeout "60s" "")
+          (button :class "krita-side" :onclick "krita & eww close-all" :timeout "60s" "")          
+          (button :class "logout-side" :onclick "~/.config/hypr/Scripts/gpu-screen-record & eww close-all" :timeout "60s" ""))))
+  
+
+
+
+    (defwindow sys_side 
+                :geometry (geometry :x "12px" :y "10px" :width "150px" :height "65px")
+                :monitor 0
+                                (sys_side))

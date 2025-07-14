@@ -27,7 +27,7 @@ if [ "$1" == "-bat" ]; then
 	fi
 
 	# Output the battery percentage and icon
-	echo "$battery_icon $battery_percentage%"
+	echo "$battery_percentage%$battery_icon"
 
 else
 	echo "Invalid option: $1"

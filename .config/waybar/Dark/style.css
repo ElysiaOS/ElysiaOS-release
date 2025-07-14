@@ -1,0 +1,331 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-weight: bold;
+  font-family: ElysiaOSNew12;
+  font-size: 12px;
+
+}
+
+window#waybar {
+  background: rgba(92, 83, 109, 0);
+}
+
+tooltip {
+  background: #1e1e2e;
+  opacity: 0.8;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #1e1e2e;
+}
+
+tooltip label {
+  color: #b1c9ec;
+}
+
+#workspaces {
+  padding: 1px 6px;
+  margin: 15px 3px;
+  border-radius: 46px;
+  border: solid 0px #7077bd;
+  background-color: #ffffff;
+}
+
+
+#workspaces button.active {
+  color: #ffffff;
+  background-color: transparent;
+  background-image: url('icons/hoc3.png');
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 46px;
+  min-width: 50px;
+  transition: all 0.1s ease-in;
+  animation-name: blinks;
+  animation-duration: 0.3s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blinks {
+    to {
+        background-color: #b1c9ec;
+        color: white;
+    }
+}
+
+#workspaces button.active.one {
+  color: #161925;
+  font-weight: bold;
+  background-color: #394175;
+  /* border-radius: 12px 0px 0px 12px; */
+}
+
+#workspaces button.default {
+  color: #ffffff;
+  background-color: transparent;
+  background-image: url('icons/19.png');
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 42px;
+  min-width: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  background-color: #b1c9ec;
+  color: #b1c9ec;
+  border-radius: 16px;
+  min-width: 50px;
+}
+
+
+#window {
+  padding: 6px 3px 6px 4px;
+  margin: 6px 3px 2px 4px;
+  border-radius: 80px;
+  margin: 16px 15px 18px 5px;
+  color: #ffffff;
+  background-color: #7077bd;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#clock {
+  background-color: transparent;
+  font-style: normal;
+  font-size: 12px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
+}
+
+#custom-temp, #cpu, #memory {
+  background-color: #7077bd;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+#custom-workelysia {
+  background-color: #7077bd;
+  padding: 6px 8px;
+  margin: 16px 3px;
+  background-image: url('icons/hoc1.png');
+  border-radius: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 32px;
+  border-radius: 21px;
+  min-width: 20px;
+}
+
+#battery {
+  background-color: #7077bd;
+  background-image: linear-gradient(62deg, #7077bd 20%, #b1c9ec 70%);
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-repeat: no-repeat;
+}
+
+#custom-volume,
+#network,
+#backlight,
+#bluetooth,
+#cava
+#custom-power {
+  margin: 0px 3px;
+  font-size: 12px;
+}
+
+#custom-logo {
+  background-image: url('icons/elylogoblue3.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #7077bd;
+  background-size: 23px;
+  color:  #1E1E2E;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+}
+
+#image {
+  margin: 0px 5px;
+}
+.modules-center{
+  background-color: transparent;
+  color:  #1E1E2E;
+  padding: 3px 6px;
+  border-radius: 21px;
+  font-weight: bold;
+  margin: 14px 6px;
+  text-shadow: 1px 1px 2px #7077bd;
+}
+
+
+.icon {
+    font-size: 50px; /* Adjust the size as needed */
+}
+
+#network {
+  min-width: 60px;
+}
+
+
+#pulseaudio-slider slider {
+  background: #b1c9ec;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#pulseaudio-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  background: #1E1E2E;
+  
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: #7077bd;
+}
+
+#backlight-slider slider {
+  background: #b1c9ec;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#backlight-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  background: #1E1E2E;
+}
+
+#backlight-slider highlight {
+  border-radius: 8px;
+  background-color: #7077bd;
+}
+
+#pulseaudio {
+  background-image: url('icons/audio-headphones.png');
+  background-color: #7077bd;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 21px;
+}
+
+#backlight {
+  background-image: url('icons/sun.png');
+  background-color: #7077bd;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 21px;
+
+}
+
+#custom-swaync {
+  background-image: url('icons/alerts.png');
+  background-color: #b1c9ec;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+}
+
+#custom-pic {
+  background-image: url('icons/hoc4.png');
+  background-color: #7077bd;
+  padding: 3px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 36px;
+}
+
+
+#network {
+  background-image: url('icons/network.png');
+  background-color: #7077bd;
+  padding: 1px 6px;
+  margin: 17px 3px;
+  border-radius: 21px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
+
+
+
+.recording {
+  color: #1E1E2E;
+}
+.idle {
+  color: gray;
+}
+
+#custom-recorder {
+  color: #f01242;
+  font-size: 21px;
+}
+
+#tray menu {
+  background-color: #b1c9ec;
+  padding: 2px;
+  border-radius: 26px;
+}
+
+#tray menuitem {
+  padding-top: 3px;
+  border-radius: 26px;
+}
+
+#tray menu menuitem:hover {
+  background-color: #7077bd;
+}
+
+#custom-settings {
+  background-image: url('icons/setting-hoc.png');
+  background-color: transparent;
+  padding: 1px 6px;
+  margin: 19px 3px;
+  border-radius: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
+
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=ElysiaOS
+Comment=An Materia Gtk+ theme based on Elegant Design (it was Win11 theme)
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=ElysiaOS
+MetacityTheme=ElysiaOS
+IconTheme=ElysiaOS
+CursorTheme=ElysiaHOHE-Cursor
+ButtonLayout=close,minimize,maximize:menu

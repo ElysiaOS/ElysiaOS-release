@@ -1,0 +1,26 @@
+* {
+    color: white;
+}
+
+:root {
+    --border-color-active: rgba(254, 208, 244, 0.5);
+    --bg-color: rgba(254, 208, 244, 0.5);
+    --border-radius: 38px;
+    --bg-color-hover: rgba(234, 96, 170, 0.4);
+    --index-border-color: rgba(20, 170, 170, 0.7);
+    --border-radius: 36px;
+}
+
+.client-image {
+  margin: 5px;
+}
+
+.index {
+    margin: 10px;
+    font-size: 21px;
+    font-family: hoyofont;
+}
+
+.client {
+    font-family: hoyofont;
+}

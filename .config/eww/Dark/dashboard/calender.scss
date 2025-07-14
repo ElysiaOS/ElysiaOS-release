@@ -1,0 +1,21 @@
+.cal-box {
+  font-family: Hoyofont;
+  border-radius: 26px;
+  padding: 0px 1rem .2rem;
+  color: $black;
+  border: 4px solid #b1c9ee;
+  background-color: rgba(178, 202, 237, 0.2);
+
+  .cal {
+    padding: .7rem .10rem 0rem;
+    margin-left: 10px;
+
+    & > * {
+      border: solid 0px transparent;
+    }
+    
+    &.highlight {
+      padding: 10rem;
+    }
+  }
+}

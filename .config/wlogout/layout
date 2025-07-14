@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "loginctl kill-session $XDG_SESSION_ID",
+    "action" : "hyprctl dispatch exit",
     "text" : "Logout",
     "keybind" : "e"
 }
@@ -29,8 +29,8 @@
     "keybind" : "l"
 }
 {
-    "label" : "nothing",
-    "action" : "loginctl kill-session $XDG_SESSION_ID",
-    "text" : "",
+    "label" : "elyhoc",
+    "action" : "~/Elysia/Theme.sh",
+    "text" : "Theme",
     "keybind" : "*"
 }

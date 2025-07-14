@@ -6,7 +6,8 @@ configuration {
 //----- Global Properties -----//
 
 * {
-    main-bg: rgba(234, 96, 170, 0.2);
+    main-bg: rgba(234, 96, 170, 0%);
+    dead-bg: rgba(234, 96, 170, 0%);
     main-fg: #fbf1c7;
     select-bg: #ea60aa;
     select-fg: #282828;
@@ -17,7 +18,7 @@ configuration {
 window {
     enabled:                     true;
     fullscreen:                  false;
-    width:                       98%;
+    width:                       50%;
     transparency:                "real";
     cursor:                      "default";
     spacing:                     0px;
@@ -26,6 +27,10 @@ window {
     border-radius:               26px;
     border-color:                transparent;
     background-color:            transparent;
+    location: north;
+
+    x-offset: 5px;
+    y-offset: -70px;
 }
 
 //----- Main Box -----//
@@ -40,39 +45,40 @@ mainbox {
 
 listview {
     enabled:                     true;
-    columns:                     6;           // Number of items per row
-    lines:                       1;           // Displaying only one row
-    spacing:                     26px;        // Space between items
-    padding:                     56px;        // Padding around the list
+    columns:                     20;           // Number of items per row
+    lines:                       15;           // Displaying only one row
+    spacing:                     16px;        // Space between items
+    padding:                     25px;        // Padding around the list
     cycle:                       true;
-    dynamic:                     false;
+    dynamic:                     true;
     scrollbar:                   true;
-    layout:                      vertical;   // Ensure horizontal layout
+    layout:                      horizontal;   // Ensure horizontal layout
     reverse:                     false;       // Keep the order normal
     fixed-height:                true;        // Keep height fixed
     fixed-columns:               true;        // Ensure columns are fixed
     cursor:                      "default";
     background-color:            transparent;
+
+
 }
 
 //----- Elements -----//
 
 element {
     enabled:                     true;
-    orientation:                 vertical;   // Ensure elements are horizontal
-    spacing:                     40px;         // Space between elements
-    padding:                     10px;         // Padding around elements
-    border-radius:               26px;        // Rounded corners
-    cursor:                      pointer;
+    orientation:                 vertical;   // Ensure vertical layout
+    spacing:                     1px;         // Space between elements
+    padding:                     8px;         // Padding around elements
+    border-radius:               120px;        // Rounded corners
     background-color:            transparent;
 }
 
 element selected.normal {
-    background-color:            @select-bg;
+    background-color:            @dead-bg;
 }
 
 element-icon {
-    size:                        33%;            // Adjust size as needed
+    size:                        25%;            // Adjust size as needed
     cursor:                      inherit;
     border-radius:               21px;
     background-color:            transparent;

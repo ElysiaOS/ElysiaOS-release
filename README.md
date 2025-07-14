@@ -1,32 +1,106 @@
-<div align="center">
-
-# 🌸 ElysiaOS DOTFILES 1.0 🌸
-
-<br/>
-
-![image](./assets/bg3.png)
-<br>
-
-![image](./assets/bg1.png)
-<br>
-
-![image](./assets/bg2.png)
-<br>
-
-![recording](./assets/showcase1.gif)
-<br>
-
-
-
-## Keybindings
+<p align="center">
+<a href="https://github.com/Matsko3/ElysiaOS">
+  <img src="assets/cover.png">
+  </a>
+</p>
 
 <div align="center">
+
+# 🌸 ElysiaOS DOTFILES 2.0 Launch 🌸
+
+<h2><sub><img src="assets/signet.png" alt="Elysia Signet" width="25" height="25" /></sub> Light Theme</h2>
+<table align="center">
+  <tr>
+    <td colspan="4"><img src="assets/light1.png"></td>
+  </tr>
+  <tr>
+    <td colspan="1"><img src="assets/light2.png"></td>
+    <td colspan="1"><img src="assets/light3.png"></td>
+    <td colspan="1" align="center"><img src="assets/light4.png"></td>
+    <td colspan="1" align="center"><img src="assets/grub.png"></td>
+  </tr>
+</table>
+
+<h2><sub><img src="assets/signet2.png" alt="HoC Signet" width="25" height="25" /></sub> Dark Theme</h2>
+<table align="center">
+  <tr>
+    <td colspan="4"><img src="assets/dark1.png"></td>
+  </tr>
+  <tr>
+    <td colspan="1"><img src="assets/dark2.png"></td>
+    <td colspan="1"><img src="assets/dark3.png"></td>
+    <td colspan="1" align="center"><img src="assets/dark1.png"></td>
+    <td colspan="1" align="center"><img src="assets/dark1.png"></td>
+  </tr>
+</table>
+
+<h2><sub><img src="assets/signet.png" alt="Elysia Signet" width="25" height="25" /></sub> New Features</h2>
+<table align="center">
+  <tr>
+    <td colspan="4"><img src="assets/setting1.png"></td>
+  </tr>
+  <tr>
+    <td colspan="1"><img src="assets/grub.png"></td>
+    <td colspan="1"><img src="assets/updater.png"></td>
+    <td colspan="1" align="center"><img src="assets/widgets.png"></td>
+    <td colspan="1" align="center"><img src="assets/bootup.png"></td>
+  </tr>
+</table>
+
+</div>
+
+
+## Support and Donate
+
+If you like my project, you can always support me via just a coffee and thank you so much ❤️ !
+
+<a href="https://ko-fi.com/matsuko3"><img src="assets/ko-fi.png" width="120" height="30"/></a>
+
+<h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Installation</h2>
+
+> [!NOTE]
+> You need a functioning Arch Linux installation already up to date, or just get it from arch website.
+
+> Open Sourced [ElysiaOS Settings Application](https://github.com/Matsko3/elysiaos-settings) here
+
+### Arch Linux
+
+> [!TIP]
+> ONE CLICK INSTALLATION (keep in mind this will overrwrite some home directory please kindly read install.sh before executing anything!
+
+```bash
+curl -sSf https://www.elysiaos.live/eri.sh | bash
+```
+
+> SETTING UP FLOORP THEME
+```
+launch floorp first time to create config file for yourself
+copy the theme files from .floorp "chrome/" and "extentions/" into "/home/<uyoursername>/.floorp/<usersomething.default>" folder
+install Sidebery extention and use my style
+https://www.elysiaos.live/sidebery-style.txt
+```
+
+or 
+
+```
+git clone https://github.com/Matsko3/ElysiaOS
+cd ElysiaOS
+chmod +x install.sh
+./install.sh
+```
+### PACKAGES INCLUDED
+```
+yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krita google-chrome eww wlogout swww eww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop swaylock-effects python python-cairo python-installer python-numpy python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5 python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard libnotify clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification playerctl xkb-switch
+```
+
+<h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Keybindings</h2>
 
 | Keys | Action |
 | :--- | :--- |
 | <kbd>Super</kbd> + <kbd>Q</kbd> | Close focused window|
 | <kbd>Super</kbd> + <kbd>SPACE</kbd> | Launch Application manager |
 | <kbd>Super</kbd> + <kbd>T</kbd> | Terminal |
+| <kbd>ALT</kbd> + <kbd>SPACE</kbd> | Change Language (Modify keyboard.sh for your wanted langs) |
 | <kbd>Super</kbd> + <kbd>L</kbd> | Lock your screen Hyprlock |
 | <kbd>Super</kbd> + <kbd>M</kbd> | Powermenu |
 | <kbd>Super</kbd> + <kbd>[0-9]</kbd> | Switch workspaces |
@@ -47,7 +121,10 @@
 
 </div>
 
-# Details
+
+
+<h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Details</h2>
+
 - **OS**: Arch Linux
 - **WM**: [Hyprland](https://github.com/hyprwm/Hyprland)
 - **Wallpaper**: [swww](https://github.com/LGFae/swww)
@@ -57,5 +134,26 @@
 - **Notifications**: [Swaync](https://github.com/ErikReider/SwayNotificationCenter)
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
 - **Theme**: `Use the themes in .themes`
-- **Icons**: 'Currently cannot provide them but you can get them from [here](https://ko-fi.com/s/e3be105b94)'
+- **Icons**: `Use the icons in .icons`
 - **Cursors**: '[1st](https://ko-fi.com/s/58bc1bc84c) [2nd](https://www.pixiv.net/en/users/16588440) both in .icons'
+
+<h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Roadmap & Future Updates</h2>
+
+- [x] Updater Manager
+- [x] GRUB Theme
+- [x] Boot Animation Improvements
+- [x] Waybar Improvements
+- [x] Added Keyboard Lang switcher
+- [x] Customizable UI
+- [x] Fixed SDDM Theme
+- [x] Emoji Picker (bemoji support type bemoji in rofi for Emoji Picker)
+- [x] Improved Handling Notifications
+- [x] Power Menu
+- [x] Screen Recorder
+- [x] Screenshot Recorder
+- [ ] Improve Settings Manager stability and more (?)
+- [ ] Future Elysia AI Assistant
+- [ ] Improve Dashboard (possibly moving from eww to my new featured GTK dashboard?)
+- [ ] Adding more Themes support in future for every app
+
+</div>

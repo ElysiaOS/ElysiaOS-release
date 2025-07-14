@@ -2,7 +2,7 @@
 PROCESS_NAME="gpu-screen-recorder"
 
 if pgrep -f "$PROCESS_NAME" > /dev/null; then
-    echo '●'
+    echo ' ●'
 else
     echo ''
 fi

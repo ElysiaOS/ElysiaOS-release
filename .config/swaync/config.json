@@ -6,8 +6,8 @@
   "control-center-margin-top": 1,
   "control-center-margin-bottom": 2,
   "control-center-margin-right": 0,
-  "notification-icon-size": 64,
-  "notification-body-image-height": 100,
+  "notification-icon-size": 69,
+  "notification-body-image-height": 300,
   "notification-body-image-width": 200,
   "timeout": 5,
   "timeout-low": 5,
@@ -22,7 +22,7 @@
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "widgets": ["label", "buttons-grid", "mpris", "title", "dnd"],
+  "widgets": ["label", "buttons-grid", "title", "dnd"],
   "widget-config": {
     "title": {
       "text": "Notification Center",

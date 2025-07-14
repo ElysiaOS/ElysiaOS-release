@@ -16,6 +16,8 @@ alias ls='ls --color=auto'
 #CHMOD
 alias chmx='chmod +x'
 #search filenames
+alias packages="pacman -Qi | awk '/^Name/{name=\$3} /^Installed Size/{size=\$4 \" \" \$5; print name, size}' | sort -k2 -h -r"
+alias paclist='pacman -Q | grep'
 alias fgr='find | grep'
 alias grep='grep --color=auto'
 alias targz='tar xzvf'
@@ -25,6 +27,8 @@ alias py='python3'
 alias pystart='python -m venv ~/myenv
 source ~/myenv/bin/activate'
 alias rm='rm -i'
+alias image='kitty +kitten icat'
+alias bday='~/Elysia/bday/bday'
 alias ely='kitty +kitten icat ~/bin/elyspin.gif'
 
 
@@ -39,7 +43,7 @@ export HISTSIZE=195000000
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/Pictures:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export WINEPREFIX=~/re1999-prefix # REVERSE1999 PREFIX
+export WINEPREFIX=~/HSR-prefix # REVERSE1999 PREFIX
 
 ## COMPLETETION
 _autocomplete() {
@@ -61,4 +65,3 @@ _autocomplete() {
 
 bind 'TAB:menu-complete'
 complete -o bashdefault -o default -F _autocomplete .
-

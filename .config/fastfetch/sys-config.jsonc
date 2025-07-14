@@ -1,0 +1,87 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": null,
+  "display": {
+    "separator": ": "
+},
+"modules": [
+    "break",
+    {
+        "type": "users",
+        "key": "User ",
+        "keyColor": "32",
+      },
+    {
+        "type": "host",
+        "key": "Desktop ",
+        "keyColor": "32",
+      },
+
+    {
+        "type": "os",
+        "format": "{2}",
+        "key": "OS ",
+        "keyColor": "32",
+      },
+    
+    {
+        "type": "kernel",
+        "key": "Kernel ",
+        "keyColor": "32"
+    },
+    {
+        "type": "icons",
+        "key": "Icons ",
+        "keyColor": "32"
+    },
+    {
+        "type": "theme",
+        "key": "Theme ",
+        "keyColor": "white"
+    },
+    {
+        "type": "packages",
+        "key": "Packages ",
+        "keyColor": "32",
+      },
+    {
+        "type": "wm",
+        "key": "WM ",
+        "keyColor": "32"
+    },
+    {
+        "type": "cpu",
+        "format": "{1} ({3}) @ {7} GHz",
+        "key": "Processor ",
+        "keyColor": "white",
+      },
+      {
+        "type": "gpu",
+        "format": "{2}",
+        "key": "Graphics ",
+        "keyColor": "white",
+      },
+      {
+        "type": "memory",
+        "key": "Memory ",
+        "keyColor": "white",
+        "format": "{1} / {2}"
+    },
+    {
+        "type": "display",
+        "key": "Display ",
+        "keyColor": "32"
+    },
+    {
+        "type": "uptime",
+        "key": "Uptime ",
+        "keyColor": "white"
+    },
+    {
+        "type": "media",
+        "key": "Media ",
+        "keyColor": "white"
+    },
+    "break",
+]
+}

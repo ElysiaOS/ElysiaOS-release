@@ -28,11 +28,12 @@
   background: rgba(234, 96, 170, 0.5);
   border: 3px solid #eb71dc;
   border-radius: 16px;
-  margin: 23px -2px 30px 10px;
+  margin: 23px 16px 30px 10px;
 }
 
 .notification-content {
   border-radius: 10px;
+  
 }
 
 .notification-default-action {

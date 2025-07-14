@@ -48,12 +48,12 @@ button:hover {
   background-image: image(url("./icons/logout-hover.png"));
 }
 
-#nothing {
-    background-image: image(url("./icons/nothing.png"));
+#elyhoc {
+    background-image: image(url("./icons/elyhoc1.png"));
 }
 
-#nothing:hover {
-  background-image: image(url("./icons/nothing.png"));
+#elyhoc:hover {
+  background-image: image(url("./icons/elyhoc1.png"));
 }
 
 #reboot {

@@ -1,10 +1,9 @@
 * {
   border: none;
-  border-radius: 0;
   min-height: 0;
   font-weight: bold;
-  font-family: hoyofont;
-  font-size: 14px;
+  font-family: ElysiaOSNew12;
+  font-size: 12px;
 
 }
 
@@ -22,52 +21,64 @@ tooltip {
 }
 
 tooltip label {
-  color: #fee6f4;
+  color: #fed0f4;
 }
 
 #workspaces {
-  padding: 3px 0px;
-  margin: 6px 3px;
-  border-radius: 80px;
-  border: solid 0px #ea60aa;
+  padding: 1px 6px;
+  margin: 15px 3px;
+  border-radius: 46px;
+  border: solid 0px #fed0f4;
+  background-color: #fcedf9;
 }
 
-#workspaces button {
-  padding: 4px 8px;
-  margin: 8px 3px;
-  border-radius: 26px;
-  color: #ffffff;
-  background-color: #ea60aa;
-  transition: all 0.1s ease-in-out;
-}
 
 #workspaces button.active {
   color: #ffffff;
-  background-color: #fee6f4;
-  background-image: url('/home/matsuko/.config/waybar/icons/22.png');
+  background-color: transparent;
+  background-image: url('icons/ely1.png');
   border-radius: 16px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 42px;
+  background-size: 46px;
   min-width: 50px;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in;
+  animation-name: blinks;
+  animation-duration: 0.3s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blinks {
+    to {
+        background-color: #fed0f4;
+        color: white;
+    }
+}
+
+#workspaces button.active.one {
+  color: #161925;
+  font-weight: bold;
+  background-color: #fed0f4;
+  /* border-radius: 12px 0px 0px 12px; */
 }
 
 #workspaces button.default {
   color: #ffffff;
-  background-color: #fee6f4;
-  background-image: url('/home/matsuko/.config/waybar/icons/19.png');
+  background-color: transparent;
+  background-image: url('icons/19.png');
   border-radius: 16px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 42px;
   min-width: 50px;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-  background-color: #fee6f4;
-  color: #fee6f4;
+  background-color: #fed0f4;
+  color: #fed0f4;
   border-radius: 16px;
   min-width: 50px;
 }
@@ -79,7 +90,7 @@ tooltip label {
   border-radius: 80px;
   margin: 16px 15px 18px 5px;
   color: #ffffff;
-  background-color: #ea60aa;
+  background-color: #fd84cb;
 }
 
 window#waybar.empty #window {
@@ -87,10 +98,7 @@ window#waybar.empty #window {
 }
 
 #clock {
-  padding: 1px 6px;
-  margin: 17px 3px;
-  background-color: #ea60aa;
-  background-image: linear-gradient(62deg, #ea60aa 20%, #fee6f4 70%);
+  background-color: transparent;
   font-style: normal;
   font-size: 12px;
   border-radius: 21px;
@@ -98,7 +106,7 @@ window#waybar.empty #window {
 }
 
 #custom-temp, #cpu, #memory {
-  background-color: #ea60aa;
+  background-color: #fd84cb;
   padding: 1px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -107,10 +115,10 @@ window#waybar.empty #window {
 }
 
 #custom-workelysia {
-  background-color: #ea60aa;
+  background-color: #fd84cb;
   padding: 6px 8px;
   margin: 16px 3px;
-  background-image: url('/home/matsuko/.config/waybar/icons/4.png');
+  background-image: url('icons/4.png');
   border-radius: 16px;
   background-position: center;
   background-repeat: no-repeat;
@@ -120,14 +128,15 @@ window#waybar.empty #window {
 }
 
 #battery {
-  background-color: #ea60aa;
+  background-color: #fd84cb;
+  background-image: linear-gradient(62deg, #fd84cb 20%, #fed0f4 70%);
   padding: 3px 6px;
   margin: 17px 3px;
   border-radius: 21px;
   background-repeat: no-repeat;
 }
 
-#tray,
+
 #custom-volume,
 #network,
 #backlight,
@@ -135,14 +144,14 @@ window#waybar.empty #window {
 #cava
 #custom-power {
   margin: 0px 3px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #custom-logo {
-  background-image: url('/home/matsuko/.config/waybar/icons/elylogopink3.png');
+  background-image: url('icons/elylogopink3.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #ea60aa;
+  background-color: #fd84cb;
   background-size: 23px;
   color:  #1E1E2E;
   padding: 1px 6px;
@@ -154,13 +163,13 @@ window#waybar.empty #window {
   margin: 0px 5px;
 }
 .modules-center{
-  background-color: #ea60aa;
-  background-image: linear-gradient(62deg, #fee6f4 0%, #ea60aa 100%);
+  background-color: transparent;
   color:  #ffffff;
-  padding: 4px 6px;
-  border-radius: 18px;
+  padding: 3px 6px;
+  border-radius: 21px;
   font-weight: bold;
-  margin: 11px 10px 18px 10px;
+  margin: 14px 6px;
+  text-shadow: 1px 1px 2px #fd84cb;
 }
 
 
@@ -174,7 +183,7 @@ window#waybar.empty #window {
 
 
 #pulseaudio-slider slider {
-  background: #fee6f4;
+  background: #fed0f4;
   background-color: transparent;
   box-shadow: none;
   margin-right: 7px;
@@ -192,11 +201,11 @@ window#waybar.empty #window {
 
 #pulseaudio-slider highlight {
   border-radius: 8px;
-  background-color: #ea60aa;
+  background-color: #fd84cb;
 }
 
 #backlight-slider slider {
-  background: #fee6f4;
+  background: #fed0f4;
   background-color: transparent;
   box-shadow: none;
   margin-right: 7px;
@@ -213,12 +222,12 @@ window#waybar.empty #window {
 
 #backlight-slider highlight {
   border-radius: 8px;
-  background-color: #ea60aa;
+  background-color: #fd84cb;
 }
 
 #pulseaudio {
-  background-image: url('/home/matsuko/.config/waybar/icons/audio-headphones.png');
-  background-color: #ea60aa;
+  background-image: url('icons/audio-headphones.png');
+  background-color: #fd84cb;
   padding: 3px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -228,8 +237,8 @@ window#waybar.empty #window {
 }
 
 #backlight {
-  background-image: url('/home/matsuko/.config/waybar/icons/sun.png');
-  background-color: #ea60aa;
+  background-image: url('icons/sun.png');
+  background-color: #fd84cb;
   padding: 3px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -240,8 +249,8 @@ window#waybar.empty #window {
 }
 
 #custom-swaync {
-  background-image: url('/home/matsuko/.config/waybar/icons/alerts.png');
-  background-color: #fee6f4;
+  background-image: url('icons/alerts.png');
+  background-color: #fed0f4;
   padding: 1px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -251,8 +260,8 @@ window#waybar.empty #window {
 }
 
 #custom-pic {
-  background-image: url('/home/matsuko/.config/waybar/icons/bige.png');
-  background-color: #ea60aa;
+  background-image: url('icons/bige.png');
+  background-color: #fd84cb;
   padding: 3px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -263,8 +272,8 @@ window#waybar.empty #window {
 
 
 #network {
-  background-image: url('/home/matsuko/.config/waybar/icons/network.png');
-  background-color: #ea60aa;
+  background-image: url('icons/network.png');
+  background-color: #fd84cb;
   padding: 1px 6px;
   margin: 17px 3px;
   border-radius: 21px;
@@ -287,6 +296,33 @@ window#waybar.empty #window {
   font-size: 21px;
 }
 
+
+
+#tray menu {
+  background-color: #fcedf9;
+  padding: 2px;
+  border-radius: 26px;
+}
+
+#tray menuitem {
+  padding-top: 3px;
+  border-radius: 26px;
+}
+
+#tray menu menuitem:hover {
+  background-color: #fd84cb;
+}
+
+#custom-settings {
+  background-image: url('icons/setting.png');
+  background-color: transparent;
+  padding: 1px 6px;
+  margin: 19px 3px;
+  border-radius: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+}
 
 @keyframes blink {
   to {

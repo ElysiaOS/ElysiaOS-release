@@ -1,8 +1,6 @@
-(defpoll pfp :interval "10s" "~/.config/dwm/eww/scripts/pfp.sh")
-(defpoll username :interval "10s" "~/.config/dwm/eww/scripts/user.sh")
 (defpoll hostname :interval "10s" "cat /etc/hostname")
 (defpoll uptime :interval "30s" "uptime -p")
-(defpoll image :interval "10s" "/home/matsuko/waifu/elysia4.jpg")
+(defpoll image :interval "10s" "~/waifu/elysia4.jpg")
 
 (defpoll music_title :interval "1s" "~/.config/eww/scripts/music/songdata.sh title")
 (defpoll music_artist :interval "1s" "~/.config/eww/scripts/music/songdata.sh artist")
@@ -12,8 +10,11 @@
 
 
 
-(defpoll dashboardbg_art_url :interval "2s" "~/.config/eww/scripts/bgart.sh echo")
+(defpoll dashboardbg_art_url :interval "5s" "~/.config/eww/scripts/bgart.sh echo")
 (defpoll dashboardbg_art :interval "60s" "~/.config/eww/scripts/bgart.sh close")
+
+(defpoll sexboardbg_art_url :interval "5s" "~/.config/eww/scripts/bgart.sh echo")
+(defpoll sexboardbg_art :interval "60s" "~/.config/eww/scripts/bgart.sh close")
 
 
 (defpoll MEMORYLV :interval "2s"
@@ -26,13 +27,7 @@
 (defpoll memo :interval "2s" "~/.config/eww/scripts/update_ram.sh")
 (defpoll cpu :interval "2s" "~/.config/eww/scripts/cpu.sh")
 
-(defpoll volume_icon :interval "1s" "~/.config/dwm/eww/scripts/volume.sh icon")
-(defpoll volume :interval "1s" "~/.config/dwm/eww/scripts/volume.sh percentage")
-(defpoll volume_value :interval "1s" "~/.config/dwm/eww/scripts/volume.sh vol")
-(defpoll is_muted :interval "1s" "~/.config/dwm/eww/scripts/volume.sh muted")
 
-(defpoll br_icon :interval "1s" "~/.config/dwm/eww/scripts/brightness.sh icon")
-(defpoll br :interval "1s" "~/.config/dwm/eww/scripts/brightness.sh br")
 
 (defpoll calendar_day :interval "10h" "date '+%d'")
 (defpoll calendar_month :interval "10h" "date '+%m")
@@ -56,6 +51,8 @@
 (defvar open_apps false)
 (defvar open_wallpaper false)
 (defvar close_wallpaper false)
+(defvar open_musicbox2 false)
+(defvar close_musicbox2 false)
 
 
 (defpoll completeday :interval "1h" "date '+%A, %d %B'")
