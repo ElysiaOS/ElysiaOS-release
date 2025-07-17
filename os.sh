@@ -70,23 +70,19 @@ fi
 echo "[+] Installing packages with yay..."
 
 PACKAGES=(
-  waybar-cava thunar hyprland starship swaync discord obs krita
-  eww wlogout swww kitty swayosd btop fastfetch
+  waybar thunar hyprland starship swaync
+  wlogout swww kitty swayosd btop fastfetch
   hyprcursor hyprgraphics hypridle hyprland-qt-support
-  hyprlock hyprpicker hyprutils hyprswitch
+  hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
   xdg-desktop-portal xfce4-settings xfce4-taskmanager
   gsettings-desktop-schemas gsettings-system-schemas
   qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct noto-fonts
-  visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard
+  grim xclip wl-clipboard
   libnotify clipnotify copyq playerctl brightnessctl
   zip libzip file-roller unzip thunar-archive-plugin
   sddm-eucalyptus-drop swaylock-effects auto-cpufreq python
-  python-cairo python-installer python-numpy python-pillow python-pip
-  python-psutil python-pyqt6 python-pyqt5 ttf-jetbrains-mono-nerd
-  gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification
-  python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
 )
 
 yay -S --noconfirm --needed "${PACKAGES[@]}" || {
