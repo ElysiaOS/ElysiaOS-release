@@ -184,9 +184,6 @@ for file in "$SOURCE_DIR"/*; do
     fi
 done
 
-# Fix ownership
-chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
-
 
 # Copy rofi binary if it exists
 if [[ -f ~/bin/rofi ]]; then
