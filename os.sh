@@ -188,13 +188,11 @@ done
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
 
-
 # Copy rofi binary if it exists
 if [[ -f ~/bin/rofi ]]; then
     echo "[+] Installing rofi to /usr/bin/..."
     sudo cp ~/bin/rofi /usr/bin/
 fi
-
 
 
 # === Package Install Section ===
