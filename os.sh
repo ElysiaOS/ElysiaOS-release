@@ -325,7 +325,3 @@ rm -rf "$HOME/SDDM" \
 echo
 echo "[+] ElysiaOS installation complete!"
 echo
-
-echo "[+] Rebooting..."
-sleep 4
-reboot
