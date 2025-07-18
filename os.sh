@@ -191,9 +191,7 @@ if [[ -f ~/bin/rofi ]]; then
     sudo cp ~/bin/rofi /usr/bin/
 fi
 
-# Fix ownership
-sudo chown -R "$USER:$USER" "$HOME"
-sudo chown -R "$USER:$USER" "$HOME/Elysia"
+
 
 # === Package Install Section ===
 echo "[+] Changing themes..."
