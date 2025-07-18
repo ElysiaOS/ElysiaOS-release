@@ -56,7 +56,7 @@ echo
 echo "[+] Checking for yay..."
 if ! command -v yay &>/dev/null; then
     echo "[!] yay not found. Installing yay..."
-    sudo pacman -S --needed --noconfirm git base-devel yay
+    sudo pacman -S --needed --noconfirm git base-devel
 else
     echo "[✓] yay is already installed."
 fi
