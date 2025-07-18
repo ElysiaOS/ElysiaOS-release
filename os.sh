@@ -64,6 +64,9 @@ fi
 # === Package Install Section ===
 echo "[+] Installing packages with pacman..."
 
+# === Package Install Section ===
+echo "[+] Checking and installing available packages with pacman..."
+
 PACKAGES=(
   waybar thunar hyprland starship swaync
   wlogout swww kitty swayosd btop fastfetch
@@ -80,10 +83,26 @@ PACKAGES=(
   sddm-eucalyptus-drop auto-cpufreq python
 )
 
-sudo pacman -S --noconfirm --needed "${PACKAGES[@]}" || {
-  echo "[!] Conflict detected. Retrying with overwrite..."
-  sudo pacman -S --noconfirm --needed --overwrite="*" "${PACKAGES[@]}"
-}
+INSTALLABLE=()
+
+for pkg in "${PACKAGES[@]}"; do
+  if pacman -Ss "^$pkg$" > /dev/null; then
+    INSTALLABLE+=("$pkg")
+  else
+    echo "[!] Skipping: $pkg not found in official repositories."
+  fi
+done
+
+if [ ${#INSTALLABLE[@]} -gt 0 ]; then
+  echo "[+] Installing available packages..."
+  sudo pacman -S --noconfirm --needed "${INSTALLABLE[@]}" || {
+    echo "[!] Conflict detected. Retrying with overwrite..."
+    sudo pacman -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
+  }
+else
+  echo "[!] No installable packages found in official repositories."
+fi
+
 
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
