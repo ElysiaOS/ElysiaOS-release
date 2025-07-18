@@ -156,27 +156,36 @@ prompt_confirm() {
 }
 
 
-# === Copy dotfiles to Home Directory ===
-echo "[+] Copying dotfiles to your home directory..."
+# Set source directory explicitly
+SOURCE_DIR="/ElysiaOS"  # or use $(dirname "$0") if script is in the same dir
+TARGET_USER=$(awk -F: '$3 >= 1000 && $1 != "nobody" { print $1; exit }' /etc/passwd)
+TARGET_HOME="/home/$TARGET_USER"
 
-shopt -s dotglob  # <--- Include hidden files like .themes, .icons, etc.
+echo "[+] Detected user: $TARGET_USER"
+echo "[+] Copying dotfiles from $SOURCE_DIR to $TARGET_HOME..."
 
-for file in ./*; do
-    # Skip these explicitly
-    [[ "$file" == "./.git" || "$file" == "./install.sh" ]] && continue
+shopt -s dotglob  # Include hidden files
 
-    # Ask before copying .bashrc
-    if [[ "$file" == "./.bashrc" ]]; then
-        if prompt_confirm "Do you want to overwrite .bashrc in your home directory?"; then
-            sudo cp -rf "$file" "$HOME/"
+for file in "$SOURCE_DIR"/*; do
+    filename=$(basename "$file")
+    
+    # Skip certain files
+    [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == "home" ]] && continue
+
+    if [[ "$filename" == ".bashrc" ]]; then
+        if prompt_confirm "Do you want to overwrite .bashrc in $TARGET_HOME?"; then
+            cp -rf "$file" "$TARGET_HOME/"
         else
             echo "[✗] Skipped .bashrc"
             continue
         fi
     else
-        sudo cp -rf "$file" "$HOME/"
+        cp -rf "$file" "$TARGET_HOME/"
     fi
 done
+
+# Fix ownership
+chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
 
 
 # Copy rofi binary if it exists
