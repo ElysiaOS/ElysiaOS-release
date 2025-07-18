@@ -56,18 +56,13 @@ echo
 echo "[+] Checking for yay..."
 if ! command -v yay &>/dev/null; then
     echo "[!] yay not found. Installing yay..."
-    sudo pacman -S --needed --noconfirm git base-devel
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    pushd /tmp/yay >/dev/null
-    makepkg -si --noconfirm
-    popd >/dev/null
-    rm -rf /tmp/yay
+    sudo pacman -S --needed --noconfirm git base-devel yay
 else
     echo "[✓] yay is already installed."
 fi
 
 # === Package Install Section ===
-echo "[+] Installing packages with yay..."
+echo "[+] Installing packages with pacman..."
 
 PACKAGES=(
   waybar thunar hyprland starship swaync
@@ -82,12 +77,12 @@ PACKAGES=(
   grim xclip wl-clipboard
   libnotify clipnotify copyq playerctl brightnessctl
   zip libzip file-roller unzip thunar-archive-plugin
-  sddm-eucalyptus-drop swaylock-effects auto-cpufreq python
+  sddm-eucalyptus-drop auto-cpufreq python
 )
 
-yay -S --noconfirm --needed "${PACKAGES[@]}" || {
+sudo pacman -S --noconfirm --needed "${PACKAGES[@]}" || {
   echo "[!] Conflict detected. Retrying with overwrite..."
-  yay -S --noconfirm --needed --overwrite '*' "${PACKAGES[@]}"
+  sudo pacman -S --noconfirm --needed --overwrite="*" "${PACKAGES[@]}"
 }
 
 # === Install Floorp Browser ===
