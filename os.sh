@@ -31,7 +31,7 @@ echo
 echo "[+] Checking for yay..."
 if ! command -v yay &>/dev/null; then
     echo "[!] yay not found. Installing yay..."
-    sudo pacman -S --needed --noconfirm git base-devel yay
+    pacman -S --needed --noconfirm git base-devel yay
 else
     echo "[✓] yay is already installed."
 fi
@@ -71,9 +71,9 @@ done
 
 if [ ${#INSTALLABLE[@]} -gt 0 ]; then
   echo "[+] Installing available packages..."
-  sudo yay -S --noconfirm --needed "${INSTALLABLE[@]}" || {
+  yay -S --noconfirm --needed "${INSTALLABLE[@]}" || {
     echo "[!] Conflict detected. Retrying with overwrite..."
-    sudo yay -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
+    yay -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
   }
 else
   echo "[!] No installable packages found in official repositories."
@@ -106,8 +106,8 @@ tar -xf "$FLOORP_ARCHIVE"
 FLOORP_DIR=$(tar -tf "$FLOORP_ARCHIVE" | head -1 | cut -f1 -d"/")  # get top folder
 if [[ -d "$FLOORP_DIR" ]]; then
   echo "[+] Installing Floorp to /opt..."
-  sudo rm -rf /opt/floorp
-  sudo mv "$FLOORP_DIR" /opt/floorp
+  rm -rf /opt/floorp
+  mv "$FLOORP_DIR" /opt/floorp
   echo "[✓] Floorp installed at /opt/floorp"
 else
   echo "[✗] Extracted Floorp directory not found."
@@ -116,7 +116,7 @@ fi
 
 # Clean up archive
 rm -f "$FLOORP_ARCHIVE"
-sudo ln -sf /opt/floorp/floorp /usr/bin/floorp
+ln -sf /opt/floorp/floorp /usr/bin/floorp
 
 
 prompt_confirm() {
@@ -171,7 +171,7 @@ chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
 # Copy rofi binary if it exists
 if [[ -f $TARGET_HOME/bin/rofi ]]; then
     echo "[+] Installing rofi to /usr/bin/..."
-    sudo cp "$TARGET_HOME/bin/rofi" /usr/bin/
+    cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
 
 
@@ -184,7 +184,7 @@ echo "[+] Setting up Plymouth..."
 sleep 2
 if ! pacman -Q plymouth &>/dev/null; then
     echo "[+] Installing Plymouth..."
-    sudo pacman -S --noconfirm plymouth
+    pacman -S --noconfirm plymouth
 else
     echo "[✓] Plymouth is already installed."
 fi
@@ -193,19 +193,19 @@ fi
 MKINITCONF="/etc/mkinitcpio.conf"
 if ! grep -E "^HOOKS\s*=.*\bplymouth\b" "$MKINITCONF"; then
     echo "[+] Adding plymouth to mkinitcpio.conf HOOKS..."
-    sudo sed -i 's/\(HOOKS\s*=(.*base udev\)/\1 plymouth/' "$MKINITCONF"
+    sed -i 's/\(HOOKS\s*=(.*base udev\)/\1 plymouth/' "$MKINITCONF"
 else
     echo "[✓] Plymouth already present in mkinitcpio.conf."
 fi
 
 # === Rebuild initramfs ===
 echo "[+] Rebuilding initramfs with mkinitcpio..."
-sudo mkinitcpio -p linux
+mkinitcpio -p linux
 
 # === Copy Plymouth Theme ===
 echo "[+] Installing Plymouth theme..."
-sudo cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
-sudo plymouth-set-default-theme -R elysiaos-style2
+cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
+plymouth-set-default-theme -R elysiaos-style2
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
 PLYMOUTH_CONF="/etc/plymouth/plymouthd.conf"
@@ -216,27 +216,27 @@ echo "[+] Verifying $PLYMOUTH_CONF..."
 
 if [ ! -f "$PLYMOUTH_CONF" ]; then
     echo "[+] Creating $PLYMOUTH_CONF..."
-    echo -e "[Daemon]\n$EXPECTED_THEME\n$EXPECTED_DELAY" | sudo tee "$PLYMOUTH_CONF" >/dev/null
+    echo -e "[Daemon]\n$EXPECTED_THEME\n$EXPECTED_DELAY" | tee "$PLYMOUTH_CONF" >/dev/null
 else
     # Ensure [Daemon] section exists
     if ! grep -q "^\[Daemon\]" "$PLYMOUTH_CONF"; then
         echo "[+] Adding [Daemon] section..."
-        echo -e "\n[Daemon]\n$EXPECTED_THEME\n$EXPECTED_DELAY" | sudo tee -a "$PLYMOUTH_CONF" >/dev/null
+        echo -e "\n[Daemon]\n$EXPECTED_THEME\n$EXPECTED_DELAY" | tee -a "$PLYMOUTH_CONF" >/dev/null
     else
         # Fix Theme line inside [Daemon]
-        sudo sed -i '/^\[Daemon\]/,/^\[.*\]/{s/^Theme=.*/'"$EXPECTED_THEME"'/}' "$PLYMOUTH_CONF"
+        sed -i '/^\[Daemon\]/,/^\[.*\]/{s/^Theme=.*/'"$EXPECTED_THEME"'/}' "$PLYMOUTH_CONF"
         # Fix ShowDelay line
         if grep -q "^ShowDelay=" "$PLYMOUTH_CONF"; then
-            sudo sed -i '/^\[Daemon\]/,/^\[.*\]/{s/^ShowDelay=.*/'"$EXPECTED_DELAY"'/}' "$PLYMOUTH_CONF"
+            sed -i '/^\[Daemon\]/,/^\[.*\]/{s/^ShowDelay=.*/'"$EXPECTED_DELAY"'/}' "$PLYMOUTH_CONF"
         else
-            sudo sed -i '/^\[Daemon\]/a '"$EXPECTED_DELAY" "$PLYMOUTH_CONF"
+            sed -i '/^\[Daemon\]/a '"$EXPECTED_DELAY" "$PLYMOUTH_CONF"
         fi
     fi
 fi
 
 # === Rebuild initramfs again ===
 echo "[+] Rebuilding initramfs again after theme setup..."
-sudo mkinitcpio -p linux
+mkinitcpio -p linux
 
 
 # === SDDM Setup ===
@@ -245,7 +245,7 @@ echo "[+] Setting up SDDM and applying eucalyptus-drop theme..."
 # 1. Install SDDM if not found
 if ! command -v sddm &>/dev/null; then
     echo "[!] sddm not found. Installing..."
-    sudo pacman -S --noconfirm sddm
+    pacman -S --noconfirm sddm
 else
     echo "[✓] sddm is already installed."
 fi
@@ -253,7 +253,7 @@ fi
 # 2. Enable SDDM as the display manager
 if ! systemctl is-enabled sddm &>/dev/null; then
     echo "[+] Enabling SDDM as default display manager..."
-    sudo systemctl enable sddm
+    systemctl enable sddm
 else
     echo "[✓] SDDM is already enabled."
 fi
@@ -262,27 +262,27 @@ fi
 SDDM_THEME_SRC="SDDM/eucalyptus-drop"
 SDDM_THEME_DEST="/usr/share/sddm/themes/eucalyptus-drop"
 echo "[+] Installing eucalyptus-drop theme..."
-sudo mkdir -p /usr/share/sddm/themes
-sudo cp -r "$SDDM_THEME_SRC" /usr/share/sddm/themes/
+mkdir -p /usr/share/sddm/themes
+cp -r "$SDDM_THEME_SRC" /usr/share/sddm/themes/
 
 # 4. Modify /etc/sddm.conf to use the theme
 SDDM_CONF="/etc/sddm.conf"
 
 if [ ! -f "$SDDM_CONF" ]; then
     echo "[+] Creating new /etc/sddm.conf with eucalyptus-drop theme..."
-    echo -e "[Theme]\nCurrent=eucalyptus-drop" | sudo tee "$SDDM_CONF" >/dev/null
+    echo -e "[Theme]\nCurrent=eucalyptus-drop" | tee "$SDDM_CONF" >/dev/null
 else
     if grep -q "^\[Theme\]" "$SDDM_CONF"; then
         if grep -q "^Current=" <(awk '/^\[Theme\]/{flag=1;next}/^\[.*\]/{flag=0}flag' "$SDDM_CONF"); then
             echo "[+] Updating existing 'Current=' in [Theme] section..."
-            sudo sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=eucalyptus-drop/}' "$SDDM_CONF"
+            sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=eucalyptus-drop/}' "$SDDM_CONF"
         else
             echo "[+] Adding 'Current=' under existing [Theme] section..."
-            sudo sed -i '/^\[Theme\]/a Current=eucalyptus-drop' "$SDDM_CONF"
+            sed -i '/^\[Theme\]/a Current=eucalyptus-drop' "$SDDM_CONF"
         fi
     else
         echo "[+] Appending new [Theme] section..."
-        echo -e "\n[Theme]\nCurrent=eucalyptus-drop" | sudo tee -a "$SDDM_CONF" >/dev/null
+        echo -e "\n[Theme]\nCurrent=eucalyptus-drop" | tee -a "$SDDM_CONF" >/dev/null
     fi
 fi
 
@@ -291,27 +291,27 @@ fi
 echo "[+] Installing GRUB theme..."
 GRUB_THEME_SRC="GRUB-THEME/ElysianRealm"
 GRUB_THEME_DEST="/boot/grub/themes/ElysianRealm"
-sudo mkdir -p /boot/grub/themes
-sudo cp -r "$GRUB_THEME_SRC" /boot/grub/themes/
+mkdir -p /boot/grub/themes
+cp -r "$GRUB_THEME_SRC" /boot/grub/themes/
 
 # === Set GRUB_THEME in grub config ===
 GRUB_FILE="/etc/default/grub"
 THEME_LINE="GRUB_THEME=\"$GRUB_THEME_DEST/theme.txt\""
 
 if grep -q "^GRUB_THEME=" "$GRUB_FILE"; then
-    sudo sed -i "s|^GRUB_THEME=.*|$THEME_LINE|" "$GRUB_FILE"
+    sed -i "s|^GRUB_THEME=.*|$THEME_LINE|" "$GRUB_FILE"
 else
-    echo "$THEME_LINE" | sudo tee -a "$GRUB_FILE" >/dev/null
+    echo "$THEME_LINE" | tee -a "$GRUB_FILE" >/dev/null
 fi
 
 # === Set GRUB_CMDLINE_LINUX_DEFAULT ===
 echo "[+] Updating GRUB_CMDLINE_LINUX_DEFAULT..."
 GRUB_CMDLINE='GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash rd.udev.log_priority=3 vt.global_cursor_default=0 usbcore.autosuspend=-1"'
-sudo sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|$GRUB_CMDLINE|" "$GRUB_FILE"
+sed -i "s|^GRUB_CMDLINE_LINUX_DEFAULT=.*|$GRUB_CMDLINE|" "$GRUB_FILE"
 
 # === Regenerate grub.cfg ===
 echo "[+] Regenerating GRUB config..."
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
