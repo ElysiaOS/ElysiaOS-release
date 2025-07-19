@@ -2,6 +2,14 @@
 
 set -e
 
+# === Add ElysiaOS Repo ===
+echo "[INFO] Adding ElysiaOS repository to pacman.conf..."
+
+awk '/^\[core\]/{print; getline; print; print "\n[elysiaos-repo]\nSigLevel = Optional DatabaseOptional\nServer = https://raw.githubusercontent.com/ElysiaOS/elysiaos-repo/refs/heads/main/$arch"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
+
+pacman -Syyu --noconfirm || true
+
+
 # === ASCII Art Banner ===
 cat << "EOF"
                     ░╦╦▒▒╛``  `
