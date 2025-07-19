@@ -2,31 +2,6 @@
 
 set -e
 
-# === Confirm with Y/N ===
-if [ -t 0 ]; then
-    # Interactive shell, show prompt
-    read -rp "Are you sure you want to run ElysiaOS installation (this will modify home directory folder before running make sure you backup important stuff or reading script)...? [y/N]: " confirm
-    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-        echo "Aborted by user."
-        exit 1
-    fi
-else
-    # Force prompt by opening /dev/tty (the actual terminal)
-    if confirm=$(</dev/tty read -rp "Are you sure you want to run ElysiaOS installation (this will modify home directory folder before running make sure you backup important stuff or reading script)...? [y/N]: " confirm && echo "$confirm"); then
-        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-            echo "Aborted by user."
-            exit 1
-        fi
-    else
-        echo "[!] Unable to read from /dev/tty. Assuming 'no'."
-        exit 1
-    fi
-fi
-
-# === Cache sudo credentials to reduce password prompts ===
-sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 # === ASCII Art Banner ===
 cat << "EOF"
                     ░╦╦▒▒╛``  `
@@ -56,37 +31,38 @@ echo
 echo "[+] Checking for yay..."
 if ! command -v yay &>/dev/null; then
     echo "[!] yay not found. Installing yay..."
-    sudo pacman -S --needed --noconfirm git base-devel
+    sudo pacman -S --needed --noconfirm git base-devel yay
 else
     echo "[✓] yay is already installed."
 fi
 
 # === Package Install Section ===
-echo "[+] Installing packages with pacman..."
+echo "[+] Installing Required packages..."
 
 # === Package Install Section ===
-echo "[+] Checking and installing available packages with pacman..."
+echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
   waybar thunar hyprland starship swaync
   wlogout swww kitty swayosd btop fastfetch
   hyprcursor hyprgraphics hypridle hyprland-qt-support
-  hyprlock hyprpicker hyprutils
-  xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
+  hyprlock hyprpicker hyprutils sddm-eucalyptus-drop
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gnome
   xdg-desktop-portal xfce4-settings xfce4-taskmanager
   gsettings-desktop-schemas gsettings-system-schemas
   qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct noto-fonts
-  grim xclip wl-clipboard
+  grim xclip wl-clipboard ttf-jetbrains-mono-nerd
   libnotify clipnotify copyq playerctl brightnessctl
   zip libzip file-roller unzip thunar-archive-plugin
   sddm-eucalyptus-drop auto-cpufreq python
+  pipewire-pulse ttf-jetbrains-mono gnome-text-editor
 )
 
 INSTALLABLE=()
 
 for pkg in "${PACKAGES[@]}"; do
-  if pacman -Ss "^$pkg$" > /dev/null; then
+  if yay -Ss "^$pkg$" > /dev/null; then
     INSTALLABLE+=("$pkg")
   else
     echo "[!] Skipping: $pkg not found in official repositories."
@@ -95,14 +71,17 @@ done
 
 if [ ${#INSTALLABLE[@]} -gt 0 ]; then
   echo "[+] Installing available packages..."
-  sudo pacman -S --noconfirm --needed "${INSTALLABLE[@]}" || {
+  sudo yay -S --noconfirm --needed "${INSTALLABLE[@]}" || {
     echo "[!] Conflict detected. Retrying with overwrite..."
-    sudo pacman -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
+    sudo yay -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
   }
 else
   echo "[!] No installable packages found in official repositories."
 fi
 
+echo "[+] Setting up Pipewire..."
+
+systemctl --user enable pipewire wireplumber pipewire-pulse
 
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
@@ -188,10 +167,11 @@ done
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
 
+
 # Copy rofi binary if it exists
-if [[ -f ~/bin/rofi ]]; then
+if [[ -f $TARGET_HOME/bin/rofi ]]; then
     echo "[+] Installing rofi to /usr/bin/..."
-    sudo cp ~/bin/rofi /usr/bin/
+    sudo cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
 
 
@@ -335,12 +315,15 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
-rm -rf "$HOME/SDDM" \
-       "$HOME/GRUB-THEME" \
-       "$HOME/assets" \
-       "$HOME/plymouth" \
-       "$HOME/elylogo.png" \
-       "$HOME/README.md"
+rm -rf "$TARGET_HOME/ElysiaOS"
+rm -rf "$TARGET_HOME/SDDM"
+rm -rf "$TARGET_HOME/assets"
+rm -rf "$TARGET_HOME/plymouth"
+rm -rf "$TARGET_HOME/README.md"
+rm -rf "$TARGET_HOME/GRUB-THEME"
+rm "$TARGET_HOME/install.sh"
+rm "$TARGET_HOME/os.sh"
+rm -rf "ElysiaOS"
 
 echo
 echo "[+] ElysiaOS installation complete!"
