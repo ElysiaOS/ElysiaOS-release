@@ -193,8 +193,10 @@ sleep 2
 if ! pacman -Q plymouth &>/dev/null; then
     echo "[+] Installing Plymouth..."
     sudo pacman -S --noconfirm plymouth-elysiaos
+    plymouth-set-default-theme elysiaos-style2
 else
     echo "[✓] Plymouth is already installed."
+    plymouth-set-default-theme elysiaos-style2
 fi
 
 # === Edit mkinitcpio.conf to add plymouth ===
@@ -326,7 +328,6 @@ rm -rf "$TARGET_HOME/assets"
 rm -rf "$TARGET_HOME/plymouth"
 rm -rf "$TARGET_HOME/README.md"
 rm -rf "$TARGET_HOME/GRUB-THEME"
-rm "$TARGET_HOME/install.sh"
 rm "$TARGET_HOME/os.sh"
 rm -rf "ElysiaOS"
 
