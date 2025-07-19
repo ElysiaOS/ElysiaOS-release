@@ -192,7 +192,7 @@ echo "[+] Setting up Plymouth..."
 sleep 2
 if ! pacman -Q plymouth &>/dev/null; then
     echo "[+] Installing Plymouth..."
-    sudo pacman -S --noconfirm plymouth
+    sudo pacman -S --noconfirm plymouth-elysiaos
 else
     echo "[✓] Plymouth is already installed."
 fi
@@ -212,8 +212,7 @@ sudo mkinitcpio -p linux
 
 # === Copy Plymouth Theme ===
 echo "[+] Installing Plymouth theme..."
-sudo cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
-sudo plymouth-set-default-theme -R elysiaos-style2
+plymouth-set-default-theme -R elysiaos-style2
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
 PLYMOUTH_CONF="/etc/plymouth/plymouthd.conf"
@@ -245,7 +244,6 @@ fi
 # === Rebuild initramfs again ===
 echo "[+] Rebuilding initramfs again after theme setup..."
 sudo mkinitcpio -p linux
-
 
 # === SDDM Setup ===
 echo "[+] Setting up SDDM and applying eucalyptus-drop theme..."
