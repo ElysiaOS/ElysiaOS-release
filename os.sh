@@ -62,7 +62,7 @@ PACKAGES=(
 INSTALLABLE=()
 
 for pkg in "${PACKAGES[@]}"; do
-  if yay -Ss "^$pkg$" > /dev/null; then
+  if pacman -Ss "^$pkg$" > /dev/null; then
     INSTALLABLE+=("$pkg")
   else
     echo "[!] Skipping: $pkg not found in official repositories."
@@ -71,9 +71,9 @@ done
 
 if [ ${#INSTALLABLE[@]} -gt 0 ]; then
   echo "[+] Installing available packages..."
-  yay -S --noconfirm --needed "${INSTALLABLE[@]}" || {
+  pacman -S --noconfirm --needed "${INSTALLABLE[@]}" || {
     echo "[!] Conflict detected. Retrying with overwrite..."
-    yay -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
+    pacman -S --noconfirm --needed --overwrite="*" "${INSTALLABLE[@]}"
   }
 else
   echo "[!] No installable packages found in official repositories."
