@@ -214,6 +214,8 @@ sudo mkinitcpio -p linux
 
 # === Copy Plymouth Theme ===
 echo "[+] Installing Plymouth theme..."
+sudo cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
+sudo plymouth-set-default-theme -R elysiaos-style2
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
 PLYMOUTH_CONF="/etc/plymouth/plymouthd.conf"
