@@ -58,13 +58,13 @@ PACKAGES=(
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome
   xdg-desktop-portal xfce4-settings xfce4-taskmanager
   gsettings-desktop-schemas gsettings-system-schemas
-  qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
+  qt5-base qt5-multimedia qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct noto-fonts
   grim xclip wl-clipboard ttf-jetbrains-mono-nerd
   libnotify clipnotify copyq playerctl brightnessctl
   zip libzip file-roller unzip thunar-archive-plugin
   sddm-eucalyptus-drop auto-cpufreq python
-  pipewire-pulse ttf-jetbrains-mono gnome-text-editor
+  pipewire-pulse ttf-jetbrains-mono
 )
 
 INSTALLABLE=()
@@ -90,41 +90,6 @@ fi
 echo "[+] Setting up Pipewire..."
 
 systemctl --user enable pipewire wireplumber pipewire-pulse
-
-# === Install Floorp Browser ===
-echo "[+] Downloading Floorp browser..."
-
-FLOORP_URL="https://github.com/Floorp-Projects/Floorp/releases/download/v12.0.14/floorp-linux-amd64.tar.xz"
-FLOORP_ARCHIVE="floorp-linux-amd64.tar.xz"
-
-# Download
-curl -L "$FLOORP_URL" -o "$FLOORP_ARCHIVE"
-
-# Verify download success
-if [[ ! -f "$FLOORP_ARCHIVE" ]]; then
-  echo "[✗] Failed to download Floorp."
-  exit 1
-fi
-
-# Extract
-echo "[+] Extracting Floorp..."
-tar -xf "$FLOORP_ARCHIVE"
-
-# Move to /opt/
-FLOORP_DIR=$(tar -tf "$FLOORP_ARCHIVE" | head -1 | cut -f1 -d"/")  # get top folder
-if [[ -d "$FLOORP_DIR" ]]; then
-  echo "[+] Installing Floorp to /opt..."
-  rm -rf /opt/floorp
-  mv "$FLOORP_DIR" /opt/floorp
-  echo "[✓] Floorp installed at /opt/floorp"
-else
-  echo "[✗] Extracted Floorp directory not found."
-  exit 1
-fi
-
-# Clean up archive
-rm -f "$FLOORP_ARCHIVE"
-ln -sf /opt/floorp/floorp /usr/bin/floorp
 
 
 prompt_confirm() {
