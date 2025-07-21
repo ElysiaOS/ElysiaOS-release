@@ -87,6 +87,10 @@ else
   echo "[!] No installable packages found in official repositories."
 fi
 
+echo "[+] Setting up Pipewire..."
+
+systemctl --user enable pipewire wireplumber pipewire-pulse
+
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
 
@@ -167,13 +171,10 @@ for file in "$SOURCE_DIR"/*; do
     fi
 done
 
-echo "[+] Setting up Pipewire..."
-cd $TARGET_HOME
-systemctl --user enable pipewire wireplumber pipewire-pulse
-cd /root
 
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
+
 
 # Copy rofi binary if it exists
 if [[ -f $TARGET_HOME/bin/rofi ]]; then
@@ -213,7 +214,6 @@ sudo mkinitcpio -p linux
 
 # === Copy Plymouth Theme ===
 echo "[+] Installing Plymouth theme..."
-sudo cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R elysiaos-style2
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
