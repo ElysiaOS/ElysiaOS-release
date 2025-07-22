@@ -7,7 +7,29 @@ echo "[INFO] Adding ElysiaOS repository to pacman.conf..."
 
 awk '/^\[core\]/{print; getline; print; print "\n[elysiaos-repo]\nSigLevel = Optional DatabaseOptional\nServer = https://raw.githubusercontent.com/ElysiaOS/elysiaos-repo/refs/heads/main/$arch"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
 
+echo "[INFO] Adding ARCH Multilib repository to pacman.conf..."
+
+awk '/^\[core\]/{print; getline; print; print "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
+
 pacman -Syyu --noconfirm || true
+
+# === Update system identity ===
+echo "[INFO] Updating ElysiaOS..."
+echo "elysiaos" > /etc/hostname
+
+cat > /etc/os-release << 'EOF'
+NAME="ElysiaOS"
+PRETTY_NAME="ElysiaOS"
+ID=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://www.elysiaos.live"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"
+SUPPORT_URL="https://github.com/Matsko3/ElysiaOS"
+BUG_REPORT_URL="https://github.com/Matsko3/ElysiaOS/issues"
+PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+LOGO=elysiaos
+EOF
 
 echo "Installing rest files dotfiles and extra packages"
 
@@ -41,8 +63,8 @@ PACKAGES=(
   sublime-text-4 grim xclip wl-clipboard libnotify
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
-  pipewire-pulse ttf-jetbrains-mono swaync-elysiaos
-  qimgv sxiv sddm-eucalyptus-drop-elysiaos
+  pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
+  qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7
 )
 
 INSTALLABLE=()
@@ -300,16 +322,22 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # === Cleanup: Remove unneeded setup files from home ===
 echo "[+] Cleaning up files from home directory..."
-rm -rf "$TARGET_HOME/ElysiaOS"
-rm -rf "$TARGET_HOME/SDDM"
-rm -rf "$TARGET_HOME/assets"
-rm -rf "$TARGET_HOME/plymouth"
-rm -rf "$TARGET_HOME/README.md"
-rm -rf "$TARGET_HOME/GRUB-THEME"
+rm -rf "$TARGET_HOME/SDDM" \
+       "$TARGET_HOME/GRUB-THEME" \
+       "$TARGET_HOME/assets" \
+       "$TARGET_HOME/plymouth" \
+       "$TARGET_HOME/ElysiaOS" \
+       "$TARGET_HOME/README.md"
+
 rm "$TARGET_HOME/os.sh"
+
 sleep 2
 rm -rf "/ElysiaOS"
 
 echo
 echo "[+] ElysiaOS installation complete!"
 echo
+
+echo "[+] Rebooting..."
+sleep 4
+reboot
