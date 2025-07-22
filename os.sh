@@ -42,7 +42,7 @@ PACKAGES=(
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono sddm-eucalyptus-drop
-  fastanime-git qimgv sxiv
+  qimgv sxiv
 )
 
 INSTALLABLE=()
