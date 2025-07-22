@@ -41,7 +41,7 @@ PACKAGES=(
   sublime-text-4 grim xclip wl-clipboard libnotify
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
-  pipewire-pulse ttf-jetbrains-mono swaync
+  pipewire-pulse ttf-jetbrains-mono swaync-elysiaos
   qimgv sxiv sddm-eucalyptus-drop-elysiaos
 )
 
