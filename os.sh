@@ -41,8 +41,8 @@ PACKAGES=(
   sublime-text-4 grim xclip wl-clipboard libnotify
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
-  pipewire-pulse ttf-jetbrains-mono sddm-eucalyptus-drop-elysiaos
-  qimgv sxiv
+  pipewire-pulse ttf-jetbrains-mono swaync
+  qimgv sxiv sddm-eucalyptus-drop-elysiaos
 )
 
 INSTALLABLE=()
@@ -153,9 +153,6 @@ done
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
 
-sudo pacman -U $TARGET_HOME/ElysiaOS/packages/swaync-0.11.0-1-x86_64.pkg.tar.zst --noconfirm
-
-
 # Copy rofi binary if it exists
 if [[ -f $TARGET_HOME/bin/rofi ]]; then
     echo "[+] Installing rofi to /usr/bin/..."
@@ -241,7 +238,7 @@ fi
 # 2. Enable SDDM as the display manager
 if ! systemctl is-enabled sddm &>/dev/null; then
     echo "[+] Enabling SDDM as default display manager..."
-    systemctl enable sddm
+    sudo systemctl enable sddm
 else
     echo "[✓] SDDM is already enabled."
 fi
