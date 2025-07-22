@@ -241,7 +241,7 @@ fi
 # 2. Enable SDDM as the display manager
 if ! systemctl is-enabled sddm &>/dev/null; then
     echo "[+] Enabling SDDM as default display manager..."
-    sudo systemctl enable sddm
+    systemctl enable sddm
 else
     echo "[✓] SDDM is already enabled."
 fi
@@ -310,6 +310,7 @@ rm -rf "$TARGET_HOME/plymouth"
 rm -rf "$TARGET_HOME/README.md"
 rm -rf "$TARGET_HOME/GRUB-THEME"
 rm "$TARGET_HOME/os.sh"
+sleep 2
 rm -rf "/ElysiaOS"
 
 echo
