@@ -41,7 +41,7 @@ PACKAGES=(
   sublime-text-4 grim xclip wl-clipboard libnotify
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
-  pipewire-pulse ttf-jetbrains-mono sddm-eucalyptus-drop
+  pipewire-pulse ttf-jetbrains-mono sddm-eucalyptus-drop-elysiaos
   qimgv sxiv
 )
 
@@ -257,20 +257,20 @@ sudo cp -r "$SDDM_THEME_SRC" /usr/share/sddm/themes/
 SDDM_CONF="/etc/sddm.conf"
 
 if [ ! -f "$SDDM_CONF" ]; then
-    echo "[+] Creating new /etc/sddm.conf with eucalyptus-drop theme..."
-    echo -e "[Theme]\nCurrent=eucalyptus-drop" | sudo tee "$SDDM_CONF" >/dev/null
+    echo "[+] Creating new /etc/sddm.conf with eucalyptus-drop-elysiaos theme..."
+    echo -e "[Theme]\nCurrent=eucalyptus-drop-elysiaos" | sudo tee "$SDDM_CONF" >/dev/null
 else
     if grep -q "^\[Theme\]" "$SDDM_CONF"; then
         if grep -q "^Current=" <(awk '/^\[Theme\]/{flag=1;next}/^\[.*\]/{flag=0}flag' "$SDDM_CONF"); then
             echo "[+] Updating existing 'Current=' in [Theme] section..."
-            sudo sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=eucalyptus-drop/}' "$SDDM_CONF"
+            sudo sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=eucalyptus-drop-elysiaos/}' "$SDDM_CONF"
         else
             echo "[+] Adding 'Current=' under existing [Theme] section..."
-            sudo sed -i '/^\[Theme\]/a Current=eucalyptus-drop' "$SDDM_CONF"
+            sudo sed -i '/^\[Theme\]/a Current=eucalyptus-drop-elysiaos' "$SDDM_CONF"
         fi
     else
         echo "[+] Appending new [Theme] section..."
-        echo -e "\n[Theme]\nCurrent=eucalyptus-drop" | sudo tee -a "$SDDM_CONF" >/dev/null
+        echo -e "\n[Theme]\nCurrent=eucalyptus-drop-elysiaos" | sudo tee -a "$SDDM_CONF" >/dev/null
     fi
 fi
 
