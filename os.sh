@@ -9,31 +9,7 @@ awk '/^\[core\]/{print; getline; print; print "\n[elysiaos-repo]\nSigLevel = Opt
 
 pacman -Syyu --noconfirm || true
 
-
-# === ASCII Art Banner ===
-cat << "EOF"
-                    ░╦╦▒▒╛``  `
-                  µ░▒╩`  «═ª ,     ,╦H
-                ⌐▒░ª  1▒╩=~ ` `+═╩ªª╩░
-              å ▒▒ ,ª 1░   å    `,   ░╕
-           `▒▒░ ▒ ╒   ª▒   ╕     å  ¿░,¿==,,,,,
-            ╦░░   `,⌐ß≈ª`  ¬▒  ⌐ ╧``ªÖ`    `░░░ª
-           ªª`,⌐╦▒ª` .       ⌐       ╒    ⌐▒╩
-            "╧Ñ▒░▒~   ~.     .╒,  ,╦▒` Ñ░
-           ,░▒╦÷ `ª╩╩╩═╦,ª╩▒▒░▒ª░░╩ª    `▒▒
-           `ª░░░╦ ▒  ,╫╩       ▒░▒▒,     `░▒  ª
-             ª▒░░µ`º 1░        ░H  ╚▒▒╦╦╦▒░░▒`
-               ,"ª~  ▒░     .╦▒▒ª     "ª╨Ñ▒░░▒
-                ª▒╦¿ ░░   ,╦░▒²   ,÷=`,.,ß= `ª=
-                 1╩~,░░░░░░╩` ``   ,¿⌐▒░╩`
-                    ╒░░░▒ª ┌▒░░░░░░╩╨``
-                    ╒░╩"        `╧▒
-                    ª
-EOF
-echo
-echo "Welcome to the ElysiaOS Auto-Installer"
-echo
-
+echo "Installing rest files dotfiles and extra packages"
 
 # === Check for yay ===
 echo "[+] Checking for yay..."
@@ -51,20 +27,22 @@ echo "[+] Installing Required packages..."
 echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
-  waybar thunar hyprland starship swaync
-  wlogout swww kitty swayosd btop fastfetch
-  hyprcursor hyprgraphics hypridle hyprland-qt-support
-  hyprlock hyprpicker hyprutils sddm-eucalyptus-drop
-  xdg-desktop-portal-hyprland xdg-desktop-portal-gnome
-  xdg-desktop-portal xfce4-settings xfce4-taskmanager
-  gsettings-desktop-schemas gsettings-system-schemas
-  qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
-  qt6-base qt6-wayland qt6ct noto-fonts
-  grim xclip wl-clipboard ttf-jetbrains-mono-nerd
-  libnotify clipnotify copyq playerctl brightnessctl
-  zip libzip file-roller unzip thunar-archive-plugin
-  sddm-eucalyptus-drop auto-cpufreq python
-  pipewire-pulse ttf-jetbrains-mono gnome-text-editor
+  waybar thunar hyprland starship rofi discord krita downgrade
+  eww wlogout swww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics
+  hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
+  xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas
+  gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
+  qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin
+  noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop
+  swaylock-effects python python-cairo python-installer python-numpy
+  python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5
+  python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
+  python-pfzypa sublime-text-4 grim xclip wl-clipboard libnotify
+  clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
+  gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
+  pipewire-pulse ttf-jetbrains-mono sddm-eucalyptus-drop
+  fastanime-git qimgv sxiv downgrade
 )
 
 INSTALLABLE=()
@@ -174,6 +152,8 @@ done
 
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
+
+sudo pacman -U $TARGET_HOME/ElysiaOS/packages/swaync-0.11.0-1-x86_64.pkg.tar.zst --noconfirm
 
 
 # Copy rofi binary if it exists
@@ -330,7 +310,7 @@ rm -rf "$TARGET_HOME/plymouth"
 rm -rf "$TARGET_HOME/README.md"
 rm -rf "$TARGET_HOME/GRUB-THEME"
 rm "$TARGET_HOME/os.sh"
-rm -rf "ElysiaOS"
+rm -rf "/ElysiaOS"
 
 echo
 echo "[+] ElysiaOS installation complete!"

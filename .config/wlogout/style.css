@@ -5,9 +5,10 @@
 
 
 window {
-    font-family: hoyofont;
+    font-family: ElysiaOSNew12;
     font-size: 16pt;
-    background-color: rgba(24, 27, 32, 0.2);
+    color: white;
+    background-color: rgba(24, 27, 32, 0.5);
 
 } 
 
@@ -15,6 +16,7 @@ button {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20%;
+    color: white;
     background-color: transparent;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s ease-in;

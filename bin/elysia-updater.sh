@@ -8,19 +8,21 @@ fi
 
 # Detect real user
 REAL_USER=$(logname)
+REAL_HOME=$(eval echo "~$REAL_USER")
 
-# Get GTK theme (only if needed)
+# Get GTK theme (optional)
 GTK_THEME=$(sudo -u "$REAL_USER" DBUS_SESSION_BUS_ADDRESS=$(grep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u "$REAL_USER" gnome-session | head -n 1)/environ 2>/dev/null | tr '\0' '\n' | grep DBUS_SESSION_BUS_ADDRESS= | cut -d= -f2-) \
     gsettings get org.gnome.desktop.interface gtk-theme | tr -d "'")
 
-# Allow root to access your X session temporarily
+# Allow root to access X session
 xhost +SI:localuser:root
 
-# Launch your app with GTK_THEME passed in
+# Launch your app with proper environment
 pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY \
     QT_QPA_PLATFORMTHEME=qt5ct \
     GTK_THEME="$GTK_THEME" \
-    /usr/bin/python3 ~/Elysia/assets/update.py
+    REAL_HOME="$REAL_HOME" \
+    ~/Elysia/assets/ElysiaUpdater
 
-# Remove access after it exits
+# Revoke access after exit
 xhost -SI:localuser:root

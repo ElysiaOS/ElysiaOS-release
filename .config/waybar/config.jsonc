@@ -13,6 +13,7 @@
     "modules-center": [
         "clock",
         "image#album-art",
+        "custom/kew",
         "custom/mpris"
     ],
     "modules-right": [
@@ -239,8 +240,8 @@
         "interval": 1,
         "tooltip": false,
         "on-click": "wlogout",
+        "on-click-right": "~/bin/about_system",
         "on-click-middle": "~/Elysia/Theme.sh",
-        
     },
     "custom/swaync": {
         "format": "      ",
