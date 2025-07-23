@@ -127,24 +127,7 @@ rm -f "$FLOORP_ARCHIVE"
 ln -sf /opt/floorp/floorp /usr/bin/floorp
 
 
-prompt_confirm() {
-    local prompt="$1"
-    local response
-
-    if [ -t 0 ]; then
-        read -rp "$prompt [y/N]: " response
-    else
-        # Force prompt even in non-interactive shells
-        echo -n "$prompt [y/N]: " > /dev/tty
-        read -r response < /dev/tty
-    fi
-
-    [[ "$response" =~ ^[Yy]$ ]]
-}
-
-
-# Set source directory explicitly
-SOURCE_DIR="/ElysiaOS"  # or use $(dirname "$0") if script is in the same dir
+SOURCE_DIR="/ElysiaOS-release"  # or use $(dirname "$0") if script is in the same dir
 TARGET_USER=$(awk -F: '$3 >= 1000 && $1 != "nobody" { print $1; exit }' /etc/passwd)
 TARGET_HOME="/home/$TARGET_USER"
 
@@ -158,19 +141,10 @@ for file in "$SOURCE_DIR"/*; do
     
     # Skip certain files
     [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == "home" ]] && continue
-
-    if [[ "$filename" == ".bashrc" ]]; then
-        if prompt_confirm "Do you want to overwrite .bashrc in $TARGET_HOME?"; then
-            cp -rf "$file" "$TARGET_HOME/"
-        else
-            echo "[✗] Skipped .bashrc"
-            continue
-        fi
-    else
-        cp -rf "$file" "$TARGET_HOME/"
-    fi
+    
+    cp -rf "$file" "$TARGET_HOME/"
+    echo "[✓] Copied $filename"
 done
-
 
 # Fix ownership
 chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
@@ -181,6 +155,7 @@ if [[ -f $TARGET_HOME/bin/rofi ]]; then
     cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
 
+cp "$TARGET_HOME/ElysiaOS-release/fonts/" /usr/share/fonts/
 
 # === Package Install Section ===
 echo "[+] Changing themes..."
@@ -326,13 +301,13 @@ rm -rf "$TARGET_HOME/SDDM" \
        "$TARGET_HOME/GRUB-THEME" \
        "$TARGET_HOME/assets" \
        "$TARGET_HOME/plymouth" \
-       "$TARGET_HOME/ElysiaOS" \
+       "$TARGET_HOME/ElysiaOS-release" \
        "$TARGET_HOME/README.md"
 
 rm "$TARGET_HOME/os.sh"
 
 sleep 2
-rm -rf "/ElysiaOS"
+rm -rf "/ElysiaOS-release"
 
 echo
 echo "[+] ElysiaOS installation complete!"
