@@ -57,7 +57,7 @@ PACKAGES=(
   gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin
   noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop
-  python python-cairo python-installer python-numpy
+  python python-cairo python-installer python-numpy youtube-search-python
   python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5
   python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
   sublime-text-4 grim xclip wl-clipboard libnotify lm_sensors
