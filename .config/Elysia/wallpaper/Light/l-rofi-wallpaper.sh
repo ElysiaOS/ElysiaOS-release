@@ -1,8 +1,8 @@
 # Set some variables
-wall_dir="${HOME}/Elysia/wallpaper/Dark/"
-icon_dir="${HOME}/Elysia/wallpaper/Dark/icon/"  # Directory containing matching icons
-cacheDir="${HOME}/Elysia/wallpaper/Dark/1366x768/${theme}"
-cacheDir2="${HOME}/Elysia/wallpaper/Dark/icon/${theme}"
+wall_dir="${HOME}/.config/Elysia/wallpaper/Light/"
+icon_dir="${HOME}/.config/Elysia/wallpaper/Light/icon/"  # Directory containing matching icons
+cacheDir="${HOME}/.config/Elysia/wallpaper/Light/1366x768/${theme}"
+cacheDir2="${HOME}/.config/Elysia/wallpaper/Light/icon/${theme}"
 rofi_command="${HOME}/bin/rofi -x11 -dmenu -theme ${HOME}/.config/rofi/themes/wallpaper.rasi -theme-str ${rofi_override}"
 
 # Create cache dir if not exists

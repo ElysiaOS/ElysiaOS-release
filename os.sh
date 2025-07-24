@@ -24,10 +24,10 @@ ID=arch
 BUILD_ID=rolling
 ANSI_COLOR="38;2;23;147;209"
 HOME_URL="https://www.elysiaos.live"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
+DOCUMENTATION_URL="https://www.elysiaos.live"
 SUPPORT_URL="https://github.com/Matsko3/ElysiaOS"
 BUG_REPORT_URL="https://github.com/Matsko3/ElysiaOS/issues"
-PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+PRIVACY_POLICY_URL="https://www.elysiaos.live/privacy-policy"
 LOGO=elysiaos
 EOF
 
@@ -64,7 +64,7 @@ PACKAGES=(
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
-  qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7
+  qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7 libhandy
 )
 
 INSTALLABLE=()
@@ -239,13 +239,6 @@ if ! systemctl is-enabled sddm &>/dev/null; then
 else
     echo "[✓] SDDM is already enabled."
 fi
-
-# 3. Copy the eucalyptus-drop theme
-SDDM_THEME_SRC="SDDM/eucalyptus-drop"
-SDDM_THEME_DEST="/usr/share/sddm/themes/eucalyptus-drop"
-echo "[+] Installing eucalyptus-drop theme..."
-sudo mkdir -p /usr/share/sddm/themes
-sudo cp -r "$SDDM_THEME_SRC" /usr/share/sddm/themes/
 
 # 4. Modify /etc/sddm.conf to use the theme
 SDDM_CONF="/etc/sddm.conf"

@@ -22,7 +22,7 @@ pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY \
     QT_QPA_PLATFORMTHEME=qt5ct \
     GTK_THEME="$GTK_THEME" \
     REAL_HOME="$REAL_HOME" \
-    ~/Elysia/assets/ElysiaUpdater
+    ~/.config/Elysia/assets/ElysiaUpdater
 
 # Revoke access after exit
 xhost -SI:localuser:root

@@ -1,6 +1,6 @@
 # Directory variables
-wall_dir="${HOME}/Elysia/wallpaper/Light/"
-icon_dir="${HOME}/Elysia/wallpaper/icon/"  # Directory containing matching icons
+wall_dir="${HOME}/.config/Elysia/wallpaper/Dark/"
+icon_dir="${HOME}/.config/Elysia/wallpaper/Dark/icon/"  # Directory containing matching icons
 
 # Randomly select a wallpaper
 selected_wallpaper="$(find "$wall_dir" -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \) | shuf -n 1)"

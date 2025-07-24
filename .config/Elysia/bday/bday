@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Define the birthday notification and WAV sound file
-BIRTHDAY_SOUND="$HOME/Elysia/bday/ely_bday.wav"
-BIRTHDAY_IMAGE="$HOME/Elysia/bday/ely1.png"
-STARTUP_IMAGE="$HOME/Elysia/bday/startup.jpg"
-INI_FILE="$HOME/Elysia/bday/birthday.ini"
+BIRTHDAY_SOUND="$HOME/.config/Elysia/bday/ely_bday.wav"
+BIRTHDAY_IMAGE="$HOME/.config/Elysia/bday/ely1.png"
+STARTUP_IMAGE="$HOME/.config/Elysia/bday/startup.jpg"
+INI_FILE="$HOME/.config/Elysia/bday/birthday.ini"
 
 # Function to send a notification
 send_notification() {

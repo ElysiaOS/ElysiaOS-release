@@ -7,6 +7,7 @@ SWAYNC_DARK_STYLE="$HOME/.config/swaync/Dark/style.css"
 THEME_STATE_DIR="$HOME/.config/hypr"
 LIGHT_FILE="$THEME_STATE_DIR/Light.txt"
 DARK_FILE="$THEME_STATE_DIR/Dark.txt"
+VISUALIZER_ELY="$HOME/.config/Elysia/widgets/visualizer/light/visualizer"
 HYPER_CONF="$HOME/.config/hypr/variables.conf"
 APPLICATIONS="$HOME/.config/hypr/applications.conf"
 
@@ -32,13 +33,14 @@ apply_light_theme() {
     rm -f "$DARK_FILE"
     touch "$LIGHT_FILE"
 
-    ~/Elysia/wallpaper/Light/l-wallpaper.sh
+    ~/.config/Elysia/wallpaper/Light/l-wallpaper.sh
 
     # Reload Waybar after saving state
     "$WAYBAR_SCRIPT"
 
     # Kill and restart swaync
     "$SWAYNC_SCRIPT"
+    pkill visualizer && "$VISUALIZER_ELY"
 
     echo "Light theme applied."
 }
