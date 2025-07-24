@@ -65,6 +65,7 @@ PACKAGES=(
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
   qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7 libhandy
+  xorg-xhost polkit-gnome polkit-qt6
 )
 
 INSTALLABLE=()
@@ -86,10 +87,6 @@ if [ ${#INSTALLABLE[@]} -gt 0 ]; then
 else
   echo "[!] No installable packages found in official repositories."
 fi
-
-echo "[+] Setting up Pipewire..."
-
-systemctl --user enable pipewire wireplumber pipewire-pulse
 
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
@@ -155,9 +152,18 @@ if [[ -f $TARGET_HOME/bin/rofi ]]; then
     cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
 
+cp "$TARGET_HOME/bin/wallpaper-switch.sh" /usr/bin/
 cp -r "$TARGET_HOME/fonts" /usr/share/
+cp "$TARGET_HOME/services/wallpaper-auto.service" /etc/systemd/user/
+cp "$TARGET_HOME/services/wallpaper-auto.timer" /etc/systemd/user/
 
-# === Package Install Section ===
+
+echo "[+] Setting up Services..."
+
+systemctl --user enable pipewire wireplumber pipewire-pulse
+systemctl --user enable wallpaper-auto.timer
+systemctl --user enable wallpaper-auto.service
+
 echo "[+] Changing themes..."
 fc-cache -f -v
 
@@ -295,6 +301,7 @@ rm -rf "$TARGET_HOME/SDDM" \
        "$TARGET_HOME/assets" \
        "$TARGET_HOME/plymouth" \
        "$TARGET_HOME/fonts" \
+       "$TARGET_HOME/services" \
        "$TARGET_HOME/ElysiaOS-release" \
        "$TARGET_HOME/README.md"
 
