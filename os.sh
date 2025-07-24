@@ -65,7 +65,7 @@ PACKAGES=(
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
   qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7 libhandy
-  xorg-xhost polkit-gnome polkit-qt6
+  xorg-xhost polkit-gnome polkit-qt6 gnome-terminal
 )
 
 INSTALLABLE=()
