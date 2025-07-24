@@ -60,7 +60,7 @@ PACKAGES=(
   python python-cairo python-installer python-numpy
   python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5
   python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
-  sublime-text-4 grim xclip wl-clipboard libnotify
+  sublime-text-4 grim xclip wl-clipboard libnotify lm_sensors
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
   pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
@@ -155,7 +155,7 @@ if [[ -f $TARGET_HOME/bin/rofi ]]; then
     cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
 
-cp "$TARGET_HOME/ElysiaOS-release/fonts/" /usr/share/fonts/
+cp -r "$TARGET_HOME/fonts" /usr/share/
 
 # === Package Install Section ===
 echo "[+] Changing themes..."
