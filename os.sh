@@ -153,6 +153,7 @@ if [[ -f $TARGET_HOME/bin/rofi ]]; then
 fi
 
 cp "$TARGET_HOME/bin/wallpaper-switch.sh" /usr/bin/
+cp "$TARGET_HOME/bin/network_manager" /usr/local/bin/
 cp -r "$TARGET_HOME/fonts" /usr/share/
 cp "$TARGET_HOME/services/wallpaper-auto.service" /etc/systemd/user/
 cp "$TARGET_HOME/services/wallpaper-auto.timer" /etc/systemd/user/
