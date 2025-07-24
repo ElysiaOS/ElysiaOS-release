@@ -294,6 +294,7 @@ rm -rf "$TARGET_HOME/SDDM" \
        "$TARGET_HOME/GRUB-THEME" \
        "$TARGET_HOME/assets" \
        "$TARGET_HOME/plymouth" \
+       "$TARGET_HOME/fonts" \
        "$TARGET_HOME/ElysiaOS-release" \
        "$TARGET_HOME/README.md"
 
