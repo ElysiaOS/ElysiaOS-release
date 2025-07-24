@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Directories
-dark_wall_dir="${HOME}/Elysia/wallpaper/Dark"
-light_wall_dir="${HOME}/Elysia/wallpaper/Light"
-theme_script="${HOME}/Elysia/Theme.sh"
+dark_wall_dir="${HOME}/.config/Elysia/wallpaper/Dark"
+light_wall_dir="${HOME}/.config/Elysia/wallpaper/Light"
+theme_script="${HOME}/.config/Elysia/Theme.sh"
 
 # Theme state flags
 dark_flag="${HOME}/.config/hypr/Dark.txt"
