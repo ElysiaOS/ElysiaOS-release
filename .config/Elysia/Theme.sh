@@ -17,7 +17,7 @@ apply_light_theme() {
 
     # Update Hyprland colors for Light theme
     sed -i -E 's/^( *col\.active_border *= *rgb\()[^)]+(\))$/\1'"eb71dc"'\2/' "$HYPER_CONF"
-    sed -i -E 's|^\$launcher *=.*$|$launcher = rofi -show drun -theme /home/matsuko/.config/rofi/themes/ely.rasi|' "$APPLICATIONS"
+    sed -i -E 's|^\$launcher *=.*$|$launcher = rofi -show drun -theme ~/.config/rofi/themes/ely.rasi|' "$APPLICATIONS"
     kitty +kitten themes --reload-in=all "Elysia"
     hyprctl reload
 
