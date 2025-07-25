@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Prevent multiple instances
-if pgrep -f "update.py" > /dev/null; then
+if pgrep -f "ElysiaUpdater" > /dev/null; then
     echo "Elysia Updater is already running."
     exit 1
 fi
