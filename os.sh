@@ -70,6 +70,7 @@ PACKAGES=(
   ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
+  fcitx5 fcitx5-configtool fcitx5-mozc
 )
 
 INSTALLABLE=()
