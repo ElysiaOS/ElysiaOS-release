@@ -155,10 +155,12 @@ fi
 
 cp "$TARGET_HOME/bin/wallpaper-switch.sh" /usr/bin/
 cp "$TARGET_HOME/bin/network_manager" /usr/local/bin/
+cp "$TARGET_HOME/bin/elysettings" /usr/local/bin/
 cp -r "$TARGET_HOME/fonts" /usr/share/
 cp "$TARGET_HOME/services/wallpaper-auto.service" /etc/systemd/user/
 cp "$TARGET_HOME/services/wallpaper-auto.timer" /etc/systemd/user/
-
+cp "$TARGET_HOME/services/floorp.desktop" /usr/share/applications/
+cp "$TARGET_HOME/services/elysettings.desktop" /usr/share/applications/
 
 echo "[+] Setting up Services..."
 
