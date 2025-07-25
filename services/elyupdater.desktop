@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Elysia Settings
-Comment=ElysiaOS Settings App
+Name=Elysia Updater
+Comment=ElysiaOS Updater App
 Exec=elysia-updater.sh
 Icon=elysettings
 Terminal=false
