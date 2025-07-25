@@ -67,6 +67,9 @@ PACKAGES=(
   qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7 libhandy
   xorg-xhost polkit-gnome polkit-qt6 gnome-terminal
   ffmpegthumbnailer tumbler slurp bc coreutils dmenu
+  ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
+  ttf-sazanami ttf-baekmuk ttf-arphic-uming
+  noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
 )
 
 INSTALLABLE=()
