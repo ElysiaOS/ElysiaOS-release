@@ -71,7 +71,8 @@ PACKAGES=(
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
   fcitx5 fcitx5-configtool fcitx5-mozc mpv
-  ffmpeg gst-libav qt6-multimedia-ffmpeg gparted
+  ffmpeg gst-libav qt6-multimedia-ffmpeg
+  python-pypresence gparted
 )
 
 INSTALLABLE=()
