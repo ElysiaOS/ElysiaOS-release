@@ -3,15 +3,24 @@
 set -e
 
 # === Add ElysiaOS Repo ===
-echo "[INFO] Adding ElysiaOS repository to pacman.conf..."
+echo "[INFO] Checking for ElysiaOS repository in pacman.conf..."
+if ! grep -q '^\[elysiaos-repo\]' /etc/pacman.conf; then
+    echo "[INFO] Adding ElysiaOS repository to pacman.conf..."
+    awk '/^\[core\]/{print; getline; print; print "\n[elysiaos-repo]\nSigLevel = Optional DatabaseOptional\nServer = https://raw.githubusercontent.com/ElysiaOS/elysiaos-repo/refs/heads/main/$arch"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
+else
+    echo "[INFO] ElysiaOS repository already exists, skipping."
+fi
 
-awk '/^\[core\]/{print; getline; print; print "\n[elysiaos-repo]\nSigLevel = Optional DatabaseOptional\nServer = https://raw.githubusercontent.com/ElysiaOS/elysiaos-repo/refs/heads/main/$arch"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
+# === Add Multilib Repo ===
+echo "[INFO] Checking for multilib repository in pacman.conf..."
+if ! grep -q '^\[multilib\]' /etc/pacman.conf; then
+    echo "[INFO] Adding ARCH Multilib repository to pacman.conf..."
+    awk '/^\[core\]/{print; getline; print; print "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
+else
+    echo "[INFO] Multilib repository already exists, skipping."
+fi
 
-echo "[INFO] Adding ARCH Multilib repository to pacman.conf..."
-
-awk '/^\[core\]/{print; getline; print; print "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"; next}1' /etc/pacman.conf > /etc/pacman.conf.tmp && mv /etc/pacman.conf.tmp /etc/pacman.conf
-
-pacman -Syyu --noconfirm || true
+pacman -Syyy --noconfirm || true
 
 # === Update system identity ===
 echo "[INFO] Updating ElysiaOS..."
