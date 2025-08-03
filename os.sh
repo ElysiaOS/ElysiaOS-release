@@ -60,12 +60,12 @@ echo "[+] Checking and installing available packages..."
 PACKAGES=(
   waybar thunar hyprland starship rofi discord krita downgrade
   eww wlogout swww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics
-  hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch
+  hypridle hyprland-qt-support hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
   xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas
   gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct
   qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin
-  noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop
+  noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq
   python python-cairo python-installer python-numpy youtube-search-python
   python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5
   python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
@@ -79,7 +79,7 @@ PACKAGES=(
   ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
-  fcitx5 fcitx5-configtool fcitx5-mozc mpv
+  fcitx5 fcitx5-configtool mpv
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted
 )
