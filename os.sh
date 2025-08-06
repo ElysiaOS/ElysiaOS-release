@@ -175,6 +175,7 @@ cp -r "$TARGET_HOME/fonts" /usr/share/
 cp "$TARGET_HOME/services/wallpaper-auto.service" /etc/systemd/user/
 cp "$TARGET_HOME/services/wallpaper-auto.timer" /etc/systemd/user/
 cp "$TARGET_HOME/services/floorp.desktop" /usr/share/applications/
+cp "$TARGET_HOME/bin/ElysiaOSKeybinds" /usr/local/bin/
 
 echo "[+] Setting up Services..."
 
