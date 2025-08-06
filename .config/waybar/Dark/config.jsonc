@@ -299,7 +299,7 @@
     "exec": "~/.config/waybar/Scripts/sys.sh",
     "return-type": "json",
     "format": "{}",
-    "on-click": "~/.config/Elysia/elysettings",
+    "on-click": "elysettings",
     "interval": 2
     },
     "custom/kew": {
