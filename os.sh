@@ -79,7 +79,7 @@ PACKAGES=(
   ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
-  fcitx5 fcitx5-configtool mpv
+  fcitx5 fcitx5-configtool mpv jq
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted signet-workspaces-elysiaos
   elysia-updater-elysiaos elysia-settings-elysiaos
