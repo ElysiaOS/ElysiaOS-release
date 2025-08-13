@@ -58,7 +58,7 @@ echo "[+] Installing Required packages..."
 echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
-  waybar thunar hyprland starship rofi discord krita downgrade
+  waybar thunar hyprland starship krita downgrade
   eww wlogout swww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics
   hypridle hyprland-qt-support hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
