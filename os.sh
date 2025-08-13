@@ -83,6 +83,7 @@ PACKAGES=(
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted signet-workspaces-elysiaos
   elysia-updater-elysiaos elysia-settings-elysiaos
+  elysia-launcher
 )
 
 INSTALLABLE=()
