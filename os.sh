@@ -40,6 +40,12 @@ PRIVACY_POLICY_URL="https://www.elysiaos.live/privacy-policy"
 LOGO=elysiaos
 EOF
 
+cat > /etc/lsb-release << 'EOF'
+DISTRIB_ID=ElysiaOS
+DISTRIB_RELEASE="rolling"
+DISTRIB_DESCRIPTION="ElysiaOS"
+EOF
+
 echo "Installing rest files dotfiles and extra packages"
 
 # === Check for yay ===
@@ -147,25 +153,43 @@ TARGET_USER=$(awk -F: '$3 >= 1000 && $1 != "nobody" { print $1; exit }' /etc/pas
 TARGET_HOME="/home/$TARGET_USER"
 
 echo "[+] Detected user: $TARGET_USER"
-echo "[+] Copying dotfiles from $SOURCE_DIR to $TARGET_HOME..."
 
-shopt -s dotglob  # Include hidden files
-
-for file in "$SOURCE_DIR"/*; do
-    filename=$(basename "$file")
+# Function to copy files (used for both existing user and skel)
+copy_dotfiles() {
+    local dest_dir="$1"
+    local owner="$2"
     
-    # Skip certain files
-    [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == "home" ]] && continue
+    echo "[+] Copying dotfiles to $dest_dir..."
+    shopt -s dotglob  # Include hidden files
     
-    cp -rf "$file" "$TARGET_HOME/"
-    echo "[✓] Copied $filename"
-done
+    # Create destination directory if it doesn't exist
+    mkdir -p "$dest_dir"
+    
+    for file in "$SOURCE_DIR"/*; do
+        filename=$(basename "$file")
+        
+        # Skip certain files
+        [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == "home" ]] && continue
+        
+        cp -rf "$file" "$dest_dir/"
+        echo "[✓] Copied $filename to $dest_dir"
+    done
+    
+    # Fix ownership if owner is specified
+    if [[ -n "$owner" ]]; then
+        chown -R "$owner:$owner" "$dest_dir"
+    fi
+}
 
-# Fix ownership
-chown -R "$TARGET_USER:$TARGET_USER" "$TARGET_HOME"
+# Copy dotfiles to existing user's home
+copy_dotfiles "$TARGET_HOME" "$TARGET_USER"
+
+# ALSO copy dotfiles to /etc/skel for future users
+echo "[+] Setting up /etc/skel..."
+copy_dotfiles "/etc/skel"
 
 # Copy rofi binary if it exists
-if [[ -f $TARGET_HOME/bin/rofi ]]; then
+if [[ -f "$TARGET_HOME/bin/rofi" ]]; then
     echo "[+] Installing rofi to /usr/bin/..."
     cp "$TARGET_HOME/bin/rofi" /usr/bin/
 fi
