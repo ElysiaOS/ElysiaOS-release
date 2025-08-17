@@ -2,12 +2,22 @@
 <a href="https://github.com/Matsko3/ElysiaOS">
   <img src="assets/cover.png">
   </a>
+  <a href="https://github.com/Matsko3/ElysiaOS">
+    <img src="https://img.shields.io/github/stars/Matsko3/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Stars">
+  <a href="https://github.com/Matsko3/ElysiaOS">
+    <img src="https://img.shields.io/github/last-commit/Matsko3/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Last-Commit">
+  <a href="https://github.com/Matsko3/ElysiaOS">
+    <img src="https://img.shields.io/github/repo-size/Matsko3/ElysiaOS?style=for-the-badge&logo=github&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Repo-Size">
+  <a href="https://discord/invite/tbRy63xdWD">
+    <img src="https://img.shields.io/discord/1398271551194792027?style=for-the-badge&logo=discord&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Discord">
+  <a href="https://ko-fi.com/matsuko3">
+    <img src="https://img.shields.io/badge/Support%20me%20on-Ko--fi-FF6433?style=for-the-badge&logo=kofi&logoColor=%23ffb0e2&labelColor=%23f7f0f5&color=%23ff7ace" alt="Ko-Fi">
 </p>
 
 <div align="center">
 
-# 🌸 ElysiaOS 2.0 Launch 🌸
-# You can now Download the entire OS and install with the ISO
+# 🌸 ElysiaOS 2.3 🌸
+# You can now Download the entire OS and install with the ISO, you have to turn off Secure boot to install.
 # https://sourceforge.net/projects/elysiaos
 
 <h2><sub><img src="assets/signet.png" alt="Elysia Signet" width="25" height="25" /></sub> Light Theme</h2>
@@ -51,13 +61,6 @@
 
 </div>
 
-
-## Support and Donate
-
-If you like my project, you can always support me via just a coffee and thank you so much ❤️ !
-
-<a href="https://ko-fi.com/matsuko3"><img src="assets/ko-fi.png" width="120" height="30"/></a>
-
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Installation</h2>
 
 > [!NOTE]
@@ -90,9 +93,16 @@ cd ElysiaOS
 chmod +x install.sh
 ./install.sh
 ```
-### PACKAGES NEEDED
+### PACKAGES NEEDED 
 ```
-yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krita google-chrome eww wlogout swww eww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop swaylock-effects python python-cairo python-installer python-numpy python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5 python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard libnotify clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification playerctl xkb-switch
+yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krita google-chrome eww wlogout swww eww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics hypridle hyprland-qt-support hyprlock hyprpicker hyprutils hyprswitch xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas gsettings-system-schemas qt5-base qt5-multimedia qt5-svg qt5-wayland qt5ct qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq sddm-eucalyptus-drop swaylock-effects python python-cairo python-installer python-numpy python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5 python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm visual-studio-code-bin sublime-text-4 grim xclip wl-clipboard libnotify clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui gpu-screen-recorder-notification playerctl xkb-switch jq elysia-updater-elysiaos elysia-settings-elysiaos signet-workspaces-elysiaos keybinds-elysiaos
+```
+
+Make sure to add the elysiaos-repo to your pacman.conf before any installation
+```
+[elysiaos-repo]
+SigLevel = Optional DatabaseOptional
+Server = https://raw.githubusercontent.com/ElysiaOS/$repo/refs/heads/main/$arch
 ```
 
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Keybindings</h2>
@@ -135,6 +145,7 @@ yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krit
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Details</h2>
 
 - **OS**: Arch Linux
+- **SHELL**: Zsh
 - **WM**: [Hyprland](https://github.com/hyprwm/Hyprland)
 - **Wallpaper**: [swww](https://github.com/LGFae/swww)
 - **Applications Launcher**: [rofi](https://github.com/lbonn/rofi)
@@ -150,6 +161,7 @@ yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krit
 
 - [x] Updater Manager
 - [x] GRUB Theme
+- [x] Elysia App Launcher
 - [x] Boot Animation Improvements
 - [x] Waybar Improvements
 - [x] Added Keyboard Lang switcher
@@ -163,7 +175,7 @@ yay -S --noconfirm waybar-cava thunar hyprland starship rofi swaync discord krit
 - [ ] Improve Settings Manager stability and more (?)
 - [ ] Future Elysia AI Assistant
 - [ ] Improve Dashboard (possibly moving from eww to my new featured GTK dashboard?)
-- [ ] Adding more Themes support in future for every app
+- [x] Adding more Themes support in future for every app
 
 <h2><sub><img src="assets/eri.png" alt="Eri" width="25" height="25" /></sub> Special Thanks ♪</h2>
 
