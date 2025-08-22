@@ -148,7 +148,7 @@ Server = https://raw.githubusercontent.com/ElysiaOS/$repo/refs/heads/main/$arch
 - **SHELL**: zsh
 - **WM**: [Hyprland](https://github.com/hyprwm/Hyprland)
 - **Wallpaper**: [swww](https://github.com/LGFae/swww)
-- **Applications Launcher**: [rofi](https://github.com/lbonn/rofi)
+- **Applications Launcher**: Elysia App Launcher
 - **Top Bar**: [Waybar](https://github.com/Alexays/Waybar)
 - **Widgets**: [eww](https://github.com/elkowar/eww)
 - **Notifications**: [Swaync](https://github.com/ErikReider/SwayNotificationCenter)
