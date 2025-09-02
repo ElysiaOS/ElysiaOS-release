@@ -64,7 +64,7 @@ echo "[+] Installing Required packages..."
 echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
-  waybar thunar hyprland starship krita downgrade
+  waybar thunar hyprland starship downgrade
   eww wlogout swww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics
   hypridle hyprland-qt-support hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
@@ -85,11 +85,11 @@ PACKAGES=(
   ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
-  fcitx5 fcitx5-configtool mpv jq keybinds-elysiaos
+  fcitx5 fcitx5-configtool mpv jq sysinfo-elysiaos
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted signet-workspaces-elysiaos
   elysia-updater-elysiaos elysia-settings-elysiaos
-  elysia-launcher
+  elysia-launcher elysia-welcome-elysiaos elysia-downloader
 )
 
 INSTALLABLE=()
