@@ -65,7 +65,7 @@ echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
   waybar thunar hyprland starship downgrade
-  eww wlogout swww kitty kew swayosd btop fastfetch hyprcursor hyprgraphics
+  wlogout swww kitty kew btop fastfetch hyprcursor hyprgraphics
   hypridle hyprland-qt-support hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
   xdg-desktop-portal xfce4-settings xfce4-taskmanager gsettings-desktop-schemas
@@ -73,8 +73,7 @@ PACKAGES=(
   qt6-base qt6-wayland qt6ct zip libzip file-roller unzip thunar-archive-plugin
   noto-fonts ttf-jetbrains-mono-nerd auto-cpufreq
   python python-cairo python-installer python-numpy youtube-search-python
-  python-pillow python-pip python-pipx python-psutil python-pyqt6 python-pyqt5
-  python-pyqt5-webengine python-pyqt6-sip python-pyqt5-sip python-tqdm
+  python-pillow python-pip python-pipx python-psutil python-tqdm
   sublime-text-4 grim xclip wl-clipboard libnotify lm_sensors
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
@@ -85,11 +84,11 @@ PACKAGES=(
   ttf-dejavu ttf-ubuntu-font-family ttf-doulos-sil ttf-hanazono
   ttf-sazanami ttf-baekmuk ttf-arphic-uming
   noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd
-  fcitx5 fcitx5-configtool mpv jq sysinfo-elysiaos
+  fcitx5 fcitx5-configtool mpv jq pamixer
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted signet-workspaces-elysiaos
   elysia-updater-elysiaos elysia-settings-elysiaos
-  elysia-launcher elysia-welcome-elysiaos elysia-downloader
+  elysia-launcher 
 )
 
 INSTALLABLE=()
@@ -115,36 +114,6 @@ fi
 # === Install Floorp Browser ===
 echo "[+] Downloading Floorp browser..."
 
-FLOORP_URL="https://github.com/Floorp-Projects/Floorp/releases/download/v12.0.14/floorp-linux-amd64.tar.xz"
-FLOORP_ARCHIVE="floorp-linux-amd64.tar.xz"
-
-# Download
-curl -L "$FLOORP_URL" -o "$FLOORP_ARCHIVE"
-
-# Verify download success
-if [[ ! -f "$FLOORP_ARCHIVE" ]]; then
-  echo "[✗] Failed to download Floorp."
-  exit 1
-fi
-
-# Extract
-echo "[+] Extracting Floorp..."
-tar -xf "$FLOORP_ARCHIVE"
-
-# Move to /opt/
-FLOORP_DIR=$(tar -tf "$FLOORP_ARCHIVE" | head -1 | cut -f1 -d"/")  # get top folder
-if [[ -d "$FLOORP_DIR" ]]; then
-  echo "[+] Installing Floorp to /opt..."
-  rm -rf /opt/floorp
-  mv "$FLOORP_DIR" /opt/floorp
-  echo "[✓] Floorp installed at /opt/floorp"
-else
-  echo "[✗] Extracted Floorp directory not found."
-  exit 1
-fi
-
-# Clean up archive
-rm -f "$FLOORP_ARCHIVE"
 ln -sf /opt/floorp/floorp /usr/bin/floorp
 
 
@@ -169,7 +138,7 @@ copy_dotfiles() {
         filename=$(basename "$file")
         
         # Skip certain files
-        [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == "home" ]] && continue
+        [[ "$filename" == ".git" || "$filename" == "install.sh" || "$filename" == ".github" || "$filename" == "home" ]] && continue
         
         cp -rf "$file" "$dest_dir/"
         echo "[✓] Copied $filename to $dest_dir"
@@ -200,6 +169,9 @@ cp -r "$TARGET_HOME/fonts" /usr/share/
 cp "$TARGET_HOME/services/wallpaper-auto.service" /etc/systemd/user/
 cp "$TARGET_HOME/services/wallpaper-auto.timer" /etc/systemd/user/
 cp "$TARGET_HOME/services/floorp.desktop" /usr/share/applications/
+
+rm /etc/locale.gen
+pacman -S glibc --noconfirm --overwrite /etc/locale.gen
 
 echo "[+] Setting up Services..."
 
