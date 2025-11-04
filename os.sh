@@ -64,7 +64,7 @@ echo "[+] Installing Required packages..."
 echo "[+] Checking and installing available packages..."
 
 PACKAGES=(
-  waybar thunar hyprland starship downgrade
+  thunar hyprland starship downgrade
   wlogout swww kitty kew btop fastfetch hyprcursor hyprgraphics
   hypridle hyprland-qt-support hyprlock hyprpicker hyprutils
   xdg-desktop-portal-hyprland xdg-desktop-portal-gnome gnome-text-editor
@@ -77,7 +77,7 @@ PACKAGES=(
   sublime-text-4 grim xclip wl-clipboard libnotify lm_sensors
   clipnotify copyq gpu-screen-recorder gpu-screen-recorder-ui
   gpu-screen-recorder-notification playerctl xkb-switch brightnessctl
-  pipewire-pulse ttf-jetbrains-mono swaync-elysiaos granite
+  pipewire-pulse ttf-jetbrains-mono granite
   qimgv sxiv sddm-eucalyptus-drop-elysiaos granite7 libhandy
   xorg-xhost polkit-gnome polkit-qt6 gnome-terminal
   ffmpegthumbnailer tumbler slurp bc coreutils dmenu
@@ -88,7 +88,7 @@ PACKAGES=(
   ffmpeg gst-libav qt6-multimedia-ffmpeg
   python-pypresence gparted signet-workspaces-elysiaos
   elysia-updater-elysiaos elysia-settings-elysiaos
-  elysia-launcher 
+  elysia-launcher
 )
 
 INSTALLABLE=()
@@ -209,7 +209,7 @@ sudo mkinitcpio -p linux
 
 # === Copy Plymouth Theme ===
 echo "[+] Installing Plymouth theme..."
-sudo cp -r plymouth/themes/elysiaos-style2 /usr/share/plymouth/themes/
+sudo cp -r plymouth/themes /usr/share/plymouth/
 sudo plymouth-set-default-theme -R elysiaos-style2
 
 # === Ensure /etc/plymouth/plymouthd.conf is correct ===
